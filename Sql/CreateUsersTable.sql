@@ -1,0 +1,14 @@
+IF OBJECT_ID('Users') IS NOT NULL
+	DROP TABLE Users
+
+CREATE TABLE Users
+(
+	UserId INT IDENTITY(1, 1) NOT NULL,
+	Username VARCHAR(20) NOT NULL,
+	HashedPassword VARCHAR(100) NOT NULL
+)
+
+INSERT Users
+	(Username, HashedPassword)
+VALUES
+	('jmalbert7', '55B9C21A6822552E6F69CE874BF72041')
