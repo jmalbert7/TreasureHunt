@@ -16,18 +16,20 @@ using TreasureHuntEndpoints.Models;
 
 namespace TreasureHuntEndpoints
 {
-    public static class GetUsers
+    public static class GetUserByUsername
     {
-        [FunctionName("GetUsers")]
+        [FunctionName("GetUserByUsername")]
         public static async Task<HttpResponseMessage> Run(
-            [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "users/")] HttpRequest req,
+            [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "user/")] HttpRequest req,
             ILogger log)
         {
+            string name = req.Query["username"];
+
             var connectionString = Environment.GetEnvironmentVariable("sqldb_connection");
-            using(SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
-                var query = "SELECT * FROM Users;";
+                var query = $"SELECT * FROM Users WHERE Username = '{name}';";
                 try
                 {
                     using (SqlCommand command = new SqlCommand(query, connection))
@@ -51,7 +53,7 @@ namespace TreasureHuntEndpoints
                         }
                     }
                 }
-                catch
+                catch(Exception ex)
                 {
                     return new HttpResponseMessage(HttpStatusCode.BadRequest);
                 }
