@@ -1,4 +1,13 @@
 {
+  "scopedRegistries": [
+    {
+      "name": "Maps SDK for Unity",
+      "url": "https://unity.virtualearth.net/npm/registry/",
+      "scopes": [
+        "com.microsoft.maps"
+      ]
+    }
+  ],
   "dependencies": {
     "com.unity.2d.animation": "5.0.4",
     "com.unity.2d.pixel-perfect": "4.0.1",
@@ -44,6 +53,7 @@
     "com.unity.modules.video": "1.0.0",
     "com.unity.modules.vr": "1.0.0",
     "com.unity.modules.wind": "1.0.0",
-    "com.unity.modules.xr": "1.0.0"
+    "com.unity.modules.xr": "1.0.0",
+    "com.microsoft.maps.unity": "0.10.2"
   }
 }

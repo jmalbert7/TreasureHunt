@@ -15,4 +15,9 @@ public class MainMenu : MonoBehaviour
         Debug.Log("QUIT!");
         Application.Quit();
     }
+
+    public void GoToFindLocation()
+    {
+        SceneManager.LoadScene(2);
+    }
 }
