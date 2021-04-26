@@ -6,6 +6,7 @@ using Microsoft.Maps.Unity;
 using Microsoft.Maps.Unity.Search;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 /// <summary>
 /// Instantiates a <see cref="MapPin"/> for each location that is reverse geocoded.
@@ -14,6 +15,9 @@ using UnityEngine;
 [RequireComponent(typeof(MapRenderer))]
 public class ReverseGeocodeOnClick : MonoBehaviour
 {
+    public TextMeshProUGUI latLonText;
+    public double latitude;
+    public double longitude;
     private MapRenderer _mapRenderer = null;
 
     /// <summary>
@@ -59,6 +63,12 @@ public class ReverseGeocodeOnClick : MonoBehaviour
             // Create a new MapPin instance at the specified location.
             var newMapPin = Instantiate(_mapPinPrefab);
             newMapPin.Location = latLonAlt.LatLon;
+            latitude = latLonAlt.LatitudeInDegrees;
+            longitude = latLonAlt.LongitudeInDegrees;
+            latLonText = GameObject.Find("LatitudeLongitudeText").GetComponent<TextMeshProUGUI>();
+            latLonText.text = "Latitude: " + latitude.ToString() + "   Longitude: " + longitude.ToString();
+            Debug.Log("What is the latitude?" + latLonAlt.LatitudeInDegrees);
+            Debug.Log("What is the longitude?" + latLonAlt.LongitudeInDegrees);
             var textMesh = newMapPin.GetComponentInChildren<TextMeshPro>();
             textMesh.text = formattedAddressString ?? "No address found.";
 
