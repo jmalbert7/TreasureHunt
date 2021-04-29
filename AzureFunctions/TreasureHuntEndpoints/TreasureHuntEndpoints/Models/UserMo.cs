@@ -5,11 +5,6 @@ using System.Text;
 
 namespace TreasureHunt.API.Models
 {
-    public interface IDataModel
-    {
-        public abstract IDataModel MapToModel(SqlDataReader reader); 
-
-    }
     public class UserMo: IDataModel
     {
         public string UserId { get; set; }

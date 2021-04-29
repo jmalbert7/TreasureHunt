@@ -20,6 +20,10 @@ namespace TreasureHunt.API
             {
                 return new UserMo();
             }
+            else if (str.Equals("ClueMo"))
+            {
+                return new ClueMo();
+            }
 
             else
             {
