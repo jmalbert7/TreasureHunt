@@ -36,7 +36,7 @@ CREATE TABLE Clues
 	HuntId INT FOREIGN KEY REFERENCES Hunts(HuntId),
 	FirstFlag BIT DEFAULT 0,
 	LastFlag BIT DEFAULT 0,
-	LastClueId INT FOREIGN KEY REFERENCES Clues(ClueId),
+	LastClueId INT,
 	Location VARCHAR(200),
 	Riddle VARCHAR(500)
 )
