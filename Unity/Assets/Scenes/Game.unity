@@ -584,7 +584,7 @@ GameObject:
   - component: {fileID: 399964439}
   - component: {fileID: 399964438}
   m_Layer: 5
-  m_Name: Text (TMP) (1)
+  m_Name: ClueText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1399,7 +1399,7 @@ GameObject:
   - component: {fileID: 1717284308}
   - component: {fileID: 1717284307}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: ClueNumber
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

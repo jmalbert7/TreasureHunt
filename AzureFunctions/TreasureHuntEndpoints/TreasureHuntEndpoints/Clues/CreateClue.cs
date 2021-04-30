@@ -12,29 +12,35 @@ using Microsoft.Azure.WebJobs.Extensions.Http;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 
-namespace TreasureHunt.API.Hunts
+namespace TreasureHunt.API.Clues
 {
-    public static class CreateHunt
+    public static class CreateClue
     {
-        [FunctionName("CreateHunt")]
+        [FunctionName("CreateClue")]
         public static async Task<HttpResponseMessage> Run(
-            [HttpTrigger(AuthorizationLevel.Anonymous, "post", Route = "hunts/")] HttpRequest req,
+            [HttpTrigger(AuthorizationLevel.Anonymous, "post", Route = "clues/")] HttpRequest req,
             ILogger log)
         {
-            string idQuery = req.Query["userid"];
-            string nameQuery = req.Query["name"];
+            string idQuery = req.Query["huntid"];
+            string firstQuery = req.Query["firstflag"];
+            string lastQuery = req.Query["lastflag"];
+            string lastclueididQuery = req.Query["lastclueid"];
             string locationQuery = req.Query["location"];
+            string riddleQuery = req.Query["riddle"];
             string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
             dynamic data = JsonConvert.DeserializeObject(requestBody);
-            var userid = idQuery ?? data?.userid;
-            var name = nameQuery ?? data?.name;
+            var huntid = idQuery ?? data?.huntid;
+            var firstflag = firstQuery ?? data?.firstflag;
+            var lastflag = lastQuery ?? data?.lastflag;
+            var lastclueid = lastclueididQuery ?? data?.lastclueid;
             var location = locationQuery ?? data?.location;
+            var riddle = riddleQuery ??  data?.riddle;
 
-            if (userid == null || name == null || location == null)
+            if (huntid == null || location == null || riddle == null || (firstflag == 1 && lastclueid != null) || (lastclueid == 0 && firstflag != 1 && lastflag != null))
             {
                 return new HttpResponseMessage(HttpStatusCode.BadRequest)
                 {
-                    Content = new StringContent("Usage: userid, name, location needed in request body", Encoding.UTF8, "text/plain")
+                    Content = new StringContent("Usage: huntid, location, riddle, lastclueid needed in request body (unless it is the very first clue).", Encoding.UTF8, "text/plain")
                 };
             }
 
@@ -43,7 +49,7 @@ namespace TreasureHunt.API.Hunts
             {
                 connection.Open();
                 //SELECT SCOPE_IDENTITY() AS [SCOPE_IDENTITY] returns the id of the inserted row
-                var query = $"INSERT Hunts (UserId, HuntName, GeneralLocation) VALUES ('{userid}', '{name}', '{location}')SELECT SCOPE_IDENTITY() AS [SCOPE_IDENTITY];";
+                var query = $"INSERT Clues (HuntId, FirstFlag, LastFlag, LastClueId, Location, Riddle) VALUES ('{huntid}', '{firstflag}', '{lastflag}', '{lastclueid}', '{location}', '{riddle}')SELECT SCOPE_IDENTITY() AS [SCOPE_IDENTITY];";
                 try
                 {
                     using (SqlCommand command = new SqlCommand(query, connection))
