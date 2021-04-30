@@ -21,11 +21,14 @@ namespace TreasureHunt.API.Hunts
             [HttpTrigger(AuthorizationLevel.Anonymous, "post", Route = "hunts/")] HttpRequest req,
             ILogger log)
         {
+            string idQuery = req.Query["userid"];
+            string nameQuery = req.Query["name"];
+            string locationQuery = req.Query["location"];
             string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
             dynamic data = JsonConvert.DeserializeObject(requestBody);
-            var userid = data?.userid;
-            var name = data?.name;
-            var location = data?.location;
+            var userid = idQuery ?? data?.userid;
+            var name = nameQuery ?? data?.name;
+            var location = locationQuery ?? data?.location;
 
             if (userid == null || name == null || location == null)
             {
