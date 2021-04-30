@@ -21,14 +21,20 @@ namespace TreasureHunt.API.Clues
             [HttpTrigger(AuthorizationLevel.Anonymous, "post", Route = "clues/")] HttpRequest req,
             ILogger log)
         {
+            string idQuery = req.Query["huntid"];
+            string firstQuery = req.Query["firstflag"];
+            string lastQuery = req.Query["lastflag"];
+            string lastclueididQuery = req.Query["lastclueid"];
+            string locationQuery = req.Query["location"];
+            string riddleQuery = req.Query["riddle"];
             string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
             dynamic data = JsonConvert.DeserializeObject(requestBody);
-            var huntid = data?.huntid;
-            var firstflag = data?.firstflag;
-            var lastflag = data?.lastflag;
-            var lastclueid = data?.lastclueid;
-            var location = data?.location;
-            var riddle = data?.riddle;
+            var huntid = idQuery ?? data?.huntid;
+            var firstflag = firstQuery ?? data?.firstflag;
+            var lastflag = lastQuery ?? data?.lastflag;
+            var lastclueid = lastclueididQuery ?? data?.lastclueid;
+            var location = locationQuery ?? data?.location;
+            var riddle = riddleQuery ??  data?.riddle;
 
             if (huntid == null || location == null || riddle == null || (firstflag == 1 && lastclueid != null) || (lastclueid == 0 && firstflag != 1 && lastflag != null))
             {
