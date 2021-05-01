@@ -560,7 +560,7 @@ GameObject:
   - component: {fileID: 120988197}
   - component: {fileID: 120988196}
   m_Layer: 5
-  m_Name: AddHuntText
+  m_Name: NameHuntText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1313,7 +1313,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1665527569}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -2044,7 +2044,7 @@ GameObject:
   - component: {fileID: 562126460}
   - component: {fileID: 562126459}
   m_Layer: 5
-  m_Name: NameInput
+  m_Name: NameHuntInput
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2064,7 +2064,7 @@ RectTransform:
   - {fileID: 789207571}
   - {fileID: 1929045177}
   m_Father: {fileID: 1665527569}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2617,7 +2617,7 @@ RectTransform:
   - {fileID: 263058969}
   - {fileID: 198343544}
   m_Father: {fileID: 1665527569}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3064,7 +3064,7 @@ RectTransform:
   m_Children:
   - {fileID: 810525735}
   m_Father: {fileID: 1665527569}
-  m_RootOrder: 1
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3138,6 +3138,30 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1430477285}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1835291174}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
         m_CallState: 2
 --- !u!114 &1117781738
 MonoBehaviour:
@@ -3636,7 +3660,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1430477286}
   m_Layer: 5
-  m_Name: AddHuntMenu
+  m_Name: AddClueMenu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4320,16 +4344,16 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 120988195}
-  - {fileID: 1117781736}
   - {fileID: 562126458}
   - {fileID: 361501179}
   - {fileID: 833701973}
+  - {fileID: 1117781736}
   m_Father: {fileID: 1835291175}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 32, y: -8}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 685.6391, y: 358.4355}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1692830398
@@ -4345,7 +4369,7 @@ GameObject:
   - component: {fileID: 1692830401}
   - component: {fileID: 1692830400}
   m_Layer: 5
-  m_Name: AddButton
+  m_Name: AddHuntButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4415,7 +4439,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1430477285}
+      - m_Target: {fileID: 1835291174}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
@@ -4929,10 +4953,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1835291175}
-  - component: {fileID: 1835291176}
   - component: {fileID: 1835291177}
   m_Layer: 5
-  m_Name: AddHuntHomeScreen
+  m_Name: AddHuntMenu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4954,23 +4977,11 @@ RectTransform:
   m_Father: {fileID: 849996572}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -2.3442, y: -0.4767}
-  m_SizeDelta: {x: 467.68, y: 298.368}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1835291176
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1835291174}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c917d1e143082bb43b6e30b0a60052a1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1835291177
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5112,10 +5123,10 @@ RectTransform:
   m_Father: {fileID: 1835291175}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -349, y: 183}
-  m_SizeDelta: {x: 201.8262, y: 74.525}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 100.9131, y: -37.262497}
+  m_SizeDelta: {x: 201.8262, y: 74.524994}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1857332165
 MonoBehaviour:

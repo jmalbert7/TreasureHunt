@@ -13,9 +13,11 @@ public class AddHuntScript : MonoBehaviour
     public InputField huntName;
     public InputField locationName;
 
-    readonly string getUrl = "https://functionapplicationgroupx.azurewebsites.net/api/hunts/?name=";
+    readonly string getUrl = "https://functionapplicationgroupx.azurewebsites.net/api/hunts/?userid=";
+//    readonly string getUrl = "https://treasurehuntgroupx.azurewebsites.net/api/hunts/?userid=";
 
     private string myName;
+    private int myUserId = 2;     // Using user id 2 (Louis) for now
     private string myHunt;
     private string myLocation;
 
@@ -51,8 +53,9 @@ public class AddHuntScript : MonoBehaviour
 
     IEnumerator AzureGetRequest()
     {
+        string huntValue = "&name=";
         string locationValue = "&location=";
-        string azureUrl = getUrl + myHunt + locationValue + myLocation;
+        string azureUrl = getUrl + myUserId + huntValue + myHunt + locationValue + myLocation;
         Debug.Log(azureUrl);
         UnityWebRequest www = UnityWebRequest.Get(azureUrl);
 
