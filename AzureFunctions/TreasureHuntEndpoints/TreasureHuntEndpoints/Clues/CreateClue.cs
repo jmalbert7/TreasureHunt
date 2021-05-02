@@ -18,7 +18,7 @@ namespace TreasureHunt.API.Clues
     {
         [FunctionName("CreateClue")]
         public static async Task<HttpResponseMessage> Run(
-            [HttpTrigger(AuthorizationLevel.Anonymous, "post", Route = "clues/")] HttpRequest req,
+            [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = "clues/")] HttpRequest req,
             ILogger log)
         {
             string idQuery = req.Query["huntid"];
