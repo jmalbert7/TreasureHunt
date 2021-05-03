@@ -17,7 +17,7 @@ public class AddHuntScript : MonoBehaviour
 //    readonly string getUrl = "https://treasurehuntgroupx.azurewebsites.net/api/hunts/?userid=";
 
     private string myName;
-    private int myUserId = 2;     // Using user id 2 (Louis) for now
+    private int myUserId = 2;     // Using user id 2 (Louis) for now 
     private string myHunt;
     private string myLocation;
 
