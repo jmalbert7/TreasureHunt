@@ -2,15 +2,16 @@
 CS467 Capstone Project for Jessica Albert, Louis Adams, Logan Cope
 
 Deploying to Azure
-	1. In Unity, navigate to File -> Build Settings, make sure WebGL is selected in the Platform pane. Click on Build
-		a. A file explorer window will pop up, navigate to Unity -> webGLBuild. Click Select Folder
-		b. the build will take several minutes
-	2. Navigate to Unity -> webGLBuild -> TreasureHuntDeploy open TreasureHuntDeploy.sln
-		a. Navigate to File -> Open -> Website
-		b. Open the Build directory within the webGLBuild folder
-		c. Navigate to Build -> Publish Website
-		d. select Azure -> Azure App Service
-		e. Select CS467_groupx (resource group) -> TreasureHuntGroupX (App Service)
-		f. Select Finish
-		g. Click the publish button in the upper right
-Pops open the azure website or you can click on the url link in the resulting screen
+	1. Build the Unity game w/ WebGL, no compression, no decompression fallback. Save to webGLBuild folder.
+	2. Open your favorite file transfer software (FileZilla, WinSCP)
+	3. Navigate to the Azure Portal page then to the App Service (TreasureHuntGroupX)
+	4. Copy the FTPS host name. Enter it into your file transfer software in the 'host' section.
+	5. Navigate to the 'Sources' Google Drive document to grab the FTPS username and password.
+	   Enter it into the FTP software. Connect to the App Service.
+	6. Make sure you are in the site/wwwroot directory of the App Service
+	7. Copy local contents of the webGLBuild folder to the App Service.
+	8. Open the site URL.
+
+
+
+
