@@ -16,8 +16,8 @@ using UnityEngine.UI;
 public class ReverseGeocodeOnClick : MonoBehaviour
 {
     public TextMeshProUGUI latLonText;
-    public double latitude;
-    public double longitude;
+    public static double latitude;
+    public static double longitude;
     private MapRenderer _mapRenderer = null;
 
     /// <summary>

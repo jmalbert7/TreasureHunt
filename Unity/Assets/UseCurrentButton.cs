@@ -5,9 +5,10 @@ using UnityEngine.UI;
 
 public class UseCurrentButton : MonoBehaviour
 {
-    public float latitude;
-    public float longitude;
+    public static double latitude = 32.00005;
+    public static double longitude = 33.00005;
     public Text coordinates;
+    public static bool usingCurrentLocation;
 
     public void GetGPS()
     {
@@ -15,13 +16,15 @@ public class UseCurrentButton : MonoBehaviour
         if(t.isOn == true)
         {
             t.isOn = false;
+            usingCurrentLocation = false;
         }
         else
         {
             t.isOn = true;
+            usingCurrentLocation = true;
+            StartCoroutine(StartLocationService());
         }
 
-        StartCoroutine(StartLocationService());
     }
 
     private IEnumerator StartLocationService()
@@ -29,6 +32,8 @@ public class UseCurrentButton : MonoBehaviour
 //        coordinates.text = "Lat: " + "99.99999" + "   Long: " + "88.88888";
         // First, check if user has location service enabled
         if (!Input.location.isEnabledByUser) {
+            latitude = 45.001397;
+            longitude = -92.16848;
             Debug.Log("User has not enabled GPS");
             yield break;
         }
