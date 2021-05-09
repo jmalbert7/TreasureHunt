@@ -457,8 +457,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   latLonText: {fileID: 500653653}
-  latitude: 0
-  longitude: 0
   _mapPinLayer: {fileID: 26182511}
   _mapPinPrefab: {fileID: 114401410002030188, guid: f241c23c6594f6c42b94edd4fc7c55d9, type: 3}
 --- !u!114 &26182511
