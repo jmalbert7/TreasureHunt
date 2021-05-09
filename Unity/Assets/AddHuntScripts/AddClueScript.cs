@@ -10,6 +10,8 @@ using Newtonsoft.Json;
 public class AddClueScript : MonoBehaviour
 {
     public InputField riddleInput;
+    private double latitude = UseCurrentButton.latitude;
+    private double longitude = UseCurrentButton.longitude;
     
 
     readonly string getUrl = "https://functionapplicationgroupx.azurewebsites.net/api/clues/?huntid=";
@@ -19,8 +21,7 @@ public class AddClueScript : MonoBehaviour
     public int firstflag = 1;
     public int lastflag = 0;
     public int lastClueId = 0;
-    public string myLocation = "Great place";
-    private int huntId = 1;     // Using user id 2 (Louis) for now 
+    private int huntId = 1;     // Using huntId 1 for now 
   
 
     private void Start()
@@ -48,13 +49,24 @@ public class AddClueScript : MonoBehaviour
 
     IEnumerator AzureGetRequest()
     {
+        string location;
+        if(UseCurrentButton.usingCurrentLocation == true)
+        {
+            location = UseCurrentButton.latitude.ToString() + "," + UseCurrentButton.longitude.ToString();
+        }
+        else
+        {
+            location = ReverseGeocodeOnClick.latitude.ToString() + "," + ReverseGeocodeOnClick.longitude.ToString();
+        }
+
         string firstFlagParam = "&firstflag=";
         string lastClueIdParam = "&lastclueid=";
         string lastFlagParam = "&lastflag=";
         string locationParam = "&location=";
         string riddleParam = "&riddle=";
 
-        string azureUrl = getUrl + huntId + firstFlagParam + firstflag + lastClueIdParam + lastClueId + lastFlagParam + lastflag + locationParam + myLocation + riddleParam + riddle;
+        string azureUrl = getUrl + huntId + firstFlagParam + firstflag + lastClueIdParam + lastClueId + lastFlagParam + lastflag + locationParam + location + riddleParam + riddle;
+        Debug.Log(location);
         Debug.Log(azureUrl);
         UnityWebRequest www = UnityWebRequest.Get(azureUrl);
 
