@@ -21,22 +21,25 @@ namespace TreasureHunt.API.Clues
             [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = "clues/")] HttpRequest req,
             ILogger log)
         {
+            //get all query string params
             string idQuery = req.Query["huntid"];
             string firstQuery = req.Query["firstflag"];
             string lastQuery = req.Query["lastflag"];
             string lastclueididQuery = req.Query["lastclueid"];
             string locationQuery = req.Query["location"];
             string riddleQuery = req.Query["riddle"];
+
+            //get all req body values
             string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
             dynamic data = JsonConvert.DeserializeObject(requestBody);
-            var huntid = idQuery ?? data?.huntid;
-            var firstflag = firstQuery ?? data?.firstflag;
-            var lastflag = lastQuery ?? data?.lastflag;
-            var lastclueid = lastclueididQuery ?? data?.lastclueid;
-            var location = locationQuery ?? data?.location;
-            var riddle = riddleQuery ??  data?.riddle;
-
-            if (huntid == null || location == null || riddle == null || (firstflag == 1 && lastclueid != null) || (lastclueid == 0 && firstflag != 1 && lastflag != null))
+            string huntid = idQuery ?? data?.huntid;
+            string firstflag = firstQuery ?? data?.firstflag;
+            string lastflag = lastQuery ?? data?.lastflag;
+            string lastclueid = lastclueididQuery ?? data?.lastclueid;
+            string location = locationQuery ?? data?.location;
+            string riddle = riddleQuery ??  data?.riddle;
+            
+            if (huntid == null || location == null || riddle == null || (firstflag == null && lastflag == null && lastclueid == null) || (firstflag == "1" && lastclueid != null) || (lastclueid != null && firstflag == "1" && lastflag == "1") || (lastflag == "1" && lastclueid == null && firstflag != "1"))
             {
                 return new HttpResponseMessage(HttpStatusCode.BadRequest)
                 {
@@ -57,7 +60,7 @@ namespace TreasureHunt.API.Clues
                         var row = await command.ExecuteScalarAsync();
                         if (row != null)
                         {
-                            var res = JsonConvert.SerializeObject(Int32.Parse(row.ToString()));
+                            var res = JsonConvert.SerializeObject(int.Parse(row.ToString()));
                             return new HttpResponseMessage(HttpStatusCode.OK)
                             {
                                 Content = new StringContent(res, Encoding.UTF8, "application/json")
