@@ -18,7 +18,7 @@ namespace TreasureHunt.API.Clues
     {
         [FunctionName("CreateClue")]
         public static async Task<HttpResponseMessage> Run(
-            [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = "clues/")] HttpRequest req,
+            [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = "clues/create/")] HttpRequest req,
             ILogger log)
         {
             //get all query string params

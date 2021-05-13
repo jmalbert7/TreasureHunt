@@ -20,7 +20,7 @@ namespace TreasureHunt.API.Clues
     {
         [FunctionName("GetClueById")]
         public static async Task<HttpResponseMessage> Run(
-            [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "clue/")] HttpRequest req,
+            [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "clues/")] HttpRequest req,
             ILogger log)
         {
             string clueQuery = req.Query["lastclueid"];
