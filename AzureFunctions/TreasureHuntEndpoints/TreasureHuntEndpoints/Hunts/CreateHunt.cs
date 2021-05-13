@@ -18,7 +18,7 @@ namespace TreasureHunt.API.Hunts
     {
         [FunctionName("CreateHunt")]
         public static async Task<HttpResponseMessage> Run(
-            [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = "hunts/")] HttpRequest req,
+            [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = "hunts/create/")] HttpRequest req,
             ILogger log)
         {
             string idQuery = req.Query["userid"];
