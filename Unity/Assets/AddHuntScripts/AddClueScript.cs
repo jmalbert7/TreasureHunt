@@ -39,11 +39,6 @@ public class AddClueScript : MonoBehaviour
 
 
 
-    public void DisplayInfo()
-    {
-       
-    }
-
     public void IncrementFirstFlag()
     {
         firstflag += 1;
@@ -81,7 +76,7 @@ public class AddClueScript : MonoBehaviour
         // Check if on first clue or not
         if (firstflag == 1)
         {
-            azureUrl = getUrl + huntId + locationParam + location + riddleParam + riddle + firstFlagParam + firstflag;
+            azureUrl = getUrl + huntId + locationParam + location + riddleParam + riddle; //+ firstFlagParam + firstflag;
         }
         else
         {
