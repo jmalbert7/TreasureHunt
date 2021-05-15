@@ -2284,21 +2284,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1285853048}
-        m_TargetAssemblyTypeName: AddHuntScript, Assembly-CSharp
-        m_MethodName: DisplayInfo
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1285853048}
-        m_TargetAssemblyTypeName: AddHuntScript, Assembly-CSharp
-        m_MethodName: OnButtonCallAzureFunction
+      - m_Target: {fileID: 1285853049}
+        m_TargetAssemblyTypeName: CreateUserScript, Assembly-CSharp
+        m_MethodName: Display
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5326,14 +5314,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1285853047}
-  - component: {fileID: 1285853048}
+  - component: {fileID: 1285853049}
   m_Layer: 5
   m_Name: CreateAccountMenu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1285853047
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5354,7 +5342,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1285853048
+--- !u!114 &1285853049
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5363,11 +5351,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1285853046}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 717eadb0bc489934db56986a89448b29, type: 3}
+  m_Script: {fileID: 11500000, guid: 5cd671484c3e7854ea17d5d39920ca40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  huntName: {fileID: 519101330}
-  locationName: {fileID: 2102986668}
+  username: {fileID: 519101330}
+  password: {fileID: 2102986668}
 --- !u!1 &1331205611
 GameObject:
   m_ObjectHideFlags: 0
@@ -5554,7 +5542,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1430477286
 RectTransform:
   m_ObjectHideFlags: 0
