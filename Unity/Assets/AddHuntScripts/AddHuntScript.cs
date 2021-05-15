@@ -14,7 +14,7 @@ public class AddHuntScript : MonoBehaviour
     public InputField locationName;
 
     readonly string getUrl = "https://functionapplicationgroupx.azurewebsites.net/api/hunts/?userid=";
-//    readonly string getUrl = "https://treasurehuntgroupx.azurewebsites.net/api/hunts/?userid=";
+    readonly string postUrl = "https://functionapplicationgroupx.azurewebsites.net/api/hunts/";
 
     private string myName;
     private int myUserId = 2;     // Using user id 2 (Louis) for now 
@@ -58,6 +58,7 @@ public class AddHuntScript : MonoBehaviour
         string azureUrl = getUrl + myUserId + huntValue + myHunt + locationValue + myLocation;
         Debug.Log(azureUrl);
         UnityWebRequest www = UnityWebRequest.Get(azureUrl);
+
 
         yield return www.SendWebRequest();
         if (www.result == UnityWebRequest.Result.ConnectionError || www.result == UnityWebRequest.Result.ProtocolError)

@@ -55,6 +55,7 @@ namespace TreasureHunt.API
                     {
                         return await readResultFromRequest(command, expectedType);
                     }
+                    
                 }
                 catch
                 {
