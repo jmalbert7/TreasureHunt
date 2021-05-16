@@ -20,7 +20,7 @@ public class AddHuntScript : MonoBehaviour
     private int myUserId = 2;     // Using user id 2 (Louis) for now 
     private string myHunt;
     private string myLocation;
-
+//    public static int huntId;
 
 
     private void Start()
@@ -67,8 +67,8 @@ public class AddHuntScript : MonoBehaviour
         }
         else
         {
+//            huntId = Convert.ToInt32(www.downloadHandler.text);
             Debug.Log(www.downloadHandler.text);
-
         }
     }
 }

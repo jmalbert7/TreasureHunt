@@ -14,18 +14,25 @@ public class CreateUserScript : MonoBehaviour
     // Input fields for username and password
     public InputField username;
     public InputField password;
+    public InputField password2;
+    public Text passwordErrorText;
+    public Button createAccountButton;
 
     // Post url and strings to save username/password
     readonly string postUrl = "https://functionapplicationgroupx.azurewebsites.net/api/users/create/?username=";
     private string myUsername;
     private string myPassword;
-    
+    private string myPassword2;
 
     private void Start()
     {
+        // disable CreateAccount button
+        createAccountButton.interactable = false;
+
         // Event listeners to get username/password data from user
         username.onEndEdit.AddListener(GetUsername);
         password.onEndEdit.AddListener(GetPassword);
+        password2.onEndEdit.AddListener(GetPassword2);
     }
 
     private void GetUsername(string input)
@@ -38,6 +45,40 @@ public class CreateUserScript : MonoBehaviour
         myPassword = input;
     }
 
+    private void GetPassword2(string input)
+    {
+        myPassword2 = input;
+
+        // Check that passwords match
+        if(myPassword == myPassword2)
+        {
+            // disable PasswordErrorText
+            passwordErrorText.text = "";
+
+            if (ValidatePassword(myPassword))
+            {
+                // enable CreateAccount button
+                createAccountButton.interactable = true;
+            }
+        }
+        else
+        {
+            // enable PasswordErrorText
+            passwordErrorText.text = "Passwords must match!";
+
+            // disable CreateAccount button
+            createAccountButton.interactable = false;
+        }
+    }
+
+    private bool ValidatePassword(string pw)
+    {
+        if(pw.Length > 5)
+        {
+            return true;
+        }
+        else { return false; }
+    }
 
     // Function to hash user's password
     public string HashPassword(string pass)
@@ -63,8 +104,7 @@ public class CreateUserScript : MonoBehaviour
     {
         Debug.Log(myUsername);
         Debug.Log(myPassword);
-        myPassword = HashPassword(myPassword);
-        Debug.Log(myPassword);
+        Debug.Log(HashPassword(myPassword));
     }
 
     IEnumerator AzureGetRequest()
