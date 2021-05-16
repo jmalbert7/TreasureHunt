@@ -434,7 +434,7 @@ RectTransform:
   m_Children:
   - {fileID: 1217236279}
   m_Father: {fileID: 322416023}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
@@ -1588,6 +1588,7 @@ RectTransform:
   - {fileID: 582938645}
   - {fileID: 2102986671}
   - {fileID: 1885062207}
+  - {fileID: 1980480441}
   - {fileID: 512244611}
   - {fileID: 32654886}
   m_Father: {fileID: 1285853047}
@@ -2378,7 +2379,7 @@ RectTransform:
   m_Children:
   - {fileID: 1602362321}
   m_Father: {fileID: 322416023}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2441,7 +2442,19 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1430477285}
+      - m_Target: {fileID: 1285853049}
+        m_TargetAssemblyTypeName: CreateUserScript, Assembly-CSharp
+        m_MethodName: OnButtonCallAzureFunction
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1777306784}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
@@ -2823,8 +2836,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -122, y: 35}
-  m_SizeDelta: {x: -117.545, y: -301.0368}
+  m_AnchoredPosition: {x: -0.5148926, y: 34.37381}
+  m_SizeDelta: {x: -360.5152, y: -409.9976}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &582938646
 MonoBehaviour:
@@ -2909,7 +2922,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 245.8529, y: 0, z: 0.5187683, w: 0}
+  m_margin: {x: 0.44226074, y: 0, z: 0.5187683, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -4262,7 +4275,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1059600710
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5321,7 +5334,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1285853047
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5356,6 +5369,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   username: {fileID: 519101330}
   password: {fileID: 2102986668}
+  password2: {fileID: 1885062208}
+  passwordErrorText: {fileID: 1980480442}
+  createAccountButton: {fileID: 512244612}
 --- !u!1 &1331205611
 GameObject:
   m_ObjectHideFlags: 0
@@ -5390,8 +5406,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -123, y: 166}
-  m_SizeDelta: {x: -35.866, y: -264.1495}
+  m_AnchoredPosition: {x: 0.3637085, y: 165.37381}
+  m_SizeDelta: {x: -282.5934, y: -400.6637}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1331205613
 MonoBehaviour:
@@ -5476,7 +5492,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 245.8529, y: 0, z: 0.5187683, w: 0}
+  m_margin: {x: -0.809845, y: 0, z: 0.5187683, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -8452,6 +8468,85 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -0.5}
   m_SizeDelta: {x: -20, y: -13}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1980480440
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1980480441}
+  - component: {fileID: 1980480443}
+  - component: {fileID: 1980480442}
+  m_Layer: 5
+  m_Name: PasswordErrorText
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1980480441
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1980480440}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 322416023}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 246.70874, y: -59.47577}
+  m_SizeDelta: {x: 174.2052, y: 77.4715}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1980480442
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1980480440}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.7924528, g: 0.6201507, b: 0.11512991, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 841d363c73f8cb043ac907ec13a790e3, type: 3}
+    m_FontSize: 24
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 2
+    m_MaxSize: 40
+    m_Alignment: 1
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 
+--- !u!222 &1980480443
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1980480440}
+  m_CullTransparentMesh: 1
 --- !u!1 &1994106971
 GameObject:
   m_ObjectHideFlags: 0
@@ -9045,7 +9140,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 645320962}
   toggleTransition: 1
   graphic: {fileID: 1713663211}

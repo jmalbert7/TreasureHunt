@@ -18,7 +18,7 @@ public class AddClueScript : MonoBehaviour
     public int firstFlag;
     public int lastFlag; 
     public int lastClueId;
-    private int huntId = 1;     // Using huntId 1 for now 
+    private int huntId = 1;
 
     private void Start()
     {
@@ -32,10 +32,6 @@ public class AddClueScript : MonoBehaviour
        riddle = input;
     }
 
-//    public void SetFirstFlag()
-//    {
-//        firstFlag = 1;
-//    }
     public void ClearFirstFlag()
     {
         firstFlag = 0;
@@ -58,6 +54,7 @@ public class AddClueScript : MonoBehaviour
 
     IEnumerator AzureGetRequest()
     {
+//        huntId = AddHuntScript.huntId;
         string location;
         if(UseCurrentButton.usingCurrentLocation == true)
         {
