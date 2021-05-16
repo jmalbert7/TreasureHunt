@@ -13,8 +13,8 @@ public class AddHuntScript : MonoBehaviour
     public InputField huntName;
     public InputField locationName;
 
-    readonly string getUrl = "https://functionapplicationgroupx.azurewebsites.net/api/hunts/?userid=";
-    readonly string postUrl = "https://functionapplicationgroupx.azurewebsites.net/api/hunts/";
+    readonly string getUrl = "https://functionapplicationgroupx.azurewebsites.net/api/hunts/create/?userid=";
+//    readonly string postUrl = "https://functionapplicationgroupx.azurewebsites.net/api/hunts/create/";
 
     private string myName;
     private int myUserId = 2;     // Using user id 2 (Louis) for now 

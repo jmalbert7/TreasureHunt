@@ -10,26 +10,21 @@ using Newtonsoft.Json;
 public class AddClueScript : MonoBehaviour
 {
     public InputField riddleInput;
-    private double latitude = UseCurrentButton.latitude;
-    private double longitude = UseCurrentButton.longitude;
-    
 
-    readonly string getUrl = "https://functionapplicationgroupx.azurewebsites.net/api/clues/?huntid=";
-    readonly string postUrl = "https://functionapplicationgroupx.azurewebsites.net/api/clues/";
-
+    readonly string getUrl = "https://functionapplicationgroupx.azurewebsites.net/api/clues/create/?huntid=";
+//    readonly string postUrl = "https://functionapplicationgroupx.azurewebsites.net/api/clues/create/";
 
     public string riddle;
-    public int firstflag = 1;
-    //public bool firstflag = true;
-    //public int lastflag = 1; 
-    public bool lastflag = true;
-    public int lastClueId = 2;
+    public int firstFlag;
+    public int lastFlag; 
+    public int lastClueId;
     private int huntId = 1;     // Using huntId 1 for now 
-  
 
     private void Start()
     {
         riddleInput.onEndEdit.AddListener(GetRiddle);
+        firstFlag = 1;
+        lastFlag = 0;
     }
 
     private void GetRiddle(string input)
@@ -37,11 +32,17 @@ public class AddClueScript : MonoBehaviour
        riddle = input;
     }
 
-
-
-    public void IncrementFirstFlag()
+//    public void SetFirstFlag()
+//    {
+//        firstFlag = 1;
+//    }
+    public void ClearFirstFlag()
     {
-        firstflag += 1;
+        firstFlag = 0;
+    }
+    public void SetLastFlag()
+    {
+        lastFlag = 1;
     }
 
     public void ClearInputField()
@@ -73,20 +74,27 @@ public class AddClueScript : MonoBehaviour
         string locationParam = "&location=";
         string riddleParam = "&riddle=";
 
-        // Check if on first clue or not
-        if (firstflag == 1)
+        if (firstFlag == 1 && lastFlag == 1)    // single clue hunt
         {
-            azureUrl = getUrl + huntId + locationParam + location + riddleParam + riddle; //+ firstFlagParam + firstflag;
+            azureUrl = getUrl + huntId + locationParam + location + riddleParam + riddle + firstFlagParam + firstFlag + lastFlagParam + lastFlag;
         }
-        else
+        else if (firstFlag == 1)    // first clue in multi-clue hunt
         {
-            azureUrl = getUrl + huntId + locationParam + location + riddleParam + riddle;
+            azureUrl = getUrl + huntId + locationParam + location + riddleParam + riddle + firstFlagParam + firstFlag;
+        }
+        else if (lastFlag == 1)     // last clue in multi-clue hunt
+        {
+            azureUrl = getUrl + huntId + locationParam + location + riddleParam + riddle + lastFlagParam + lastFlag + lastClueIdParam + lastClueId;
+        }
+        else                        // middle clue in multi-clue hunt
+        {
+            azureUrl = getUrl + huntId + locationParam + location + riddleParam + riddle + lastClueIdParam + lastClueId;
         }
         
 
         Debug.Log(location);
         Debug.Log(azureUrl);
-        Debug.Log(firstflag);
+        Debug.Log(firstFlag);
         UnityWebRequest www = UnityWebRequest.Get(azureUrl);
     
 
@@ -116,8 +124,8 @@ public class AddClueScript : MonoBehaviour
         }
         else
         {
+            lastClueId = Convert.ToInt32(www.downloadHandler.text);
             Debug.Log(www.downloadHandler.text);
-
         }
     }
 }
