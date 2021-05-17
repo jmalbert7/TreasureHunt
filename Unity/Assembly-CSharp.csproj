@@ -56,23 +56,23 @@
     <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio Tools for Unity\16.0\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\MainMenu.cs" />
+    <Compile Include="Assets\Menu Scripts\MainMenu.cs" />
     <Compile Include="Assets\Microsoft.Maps.Unity.Examples\MapPinExample\Scripts\ClusterMapPinText.cs" />
     <Compile Include="Assets\FindLocationScripts\SearchHandler.cs" />
     <Compile Include="Assets\FindLocationScripts\MapStyleChangedHandler.cs" />
-    <Compile Include="Assets\UseCurrentButton.cs" />
+    <Compile Include="Assets\Menu Scripts\UseCurrentButton.cs" />
     <Compile Include="Assets\Microsoft.Maps.Unity.Examples\MapPinExample\Scripts\MapPinProvider.cs" />
     <Compile Include="Assets\Microsoft.Maps.Unity.Examples\Common\Scripts\CopyrightSynchronizer.cs" />
     <Compile Include="Assets\Microsoft.Maps.Unity.Examples\MapPinExample\Scripts\ZoomToClusterMapPin.cs" />
     <Compile Include="Assets\LearningScripts\CallAzure.cs" />
     <Compile Include="Assets\AddHuntScripts\AddHuntScript.cs" />
     <Compile Include="Assets\FindLocationScripts\ReverseGeocodeOnClick.cs" />
-    <Compile Include="Assets\MapScript.cs" />
+    <Compile Include="Assets\Menu Scripts\MapScript.cs" />
     <Compile Include="Assets\Login Scripts\CreateUserScript.cs" />
     <Compile Include="Assets\Microsoft.Maps.Unity.Examples\Common\Scripts\TransferLabelText.cs" />
     <Compile Include="Assets\AddHuntScripts\AddClueScript.cs" />
     <Compile Include="Assets\FindLocationScripts\FindLocation.cs" />
-    <Compile Include="Assets\Game.cs" />
+    <Compile Include="Assets\Game Scripts\Game.cs" />
     <Compile Include="Assets\FindLocationScripts\OrthoCameraMapDimensionSynchronizer.cs" />
     <Compile Include="Assets\FindLocationScripts\ZoomButtonHandler.cs" />
     <Compile Include="Assets\LearningScripts\ConsumeDataScript.cs" />
