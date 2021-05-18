@@ -79,6 +79,7 @@
     <Compile Include="Assets\Microsoft.Maps.Unity.Examples\Common\Scripts\AlignToMap.cs" />
     <Compile Include="Assets\Microsoft.Maps.Unity.Examples\MapPinExample\Scripts\ZoomToMapPin.cs" />
     <Compile Include="Assets\FindLocationScripts\MapInteractionHandlerSelector.cs" />
+    <Compile Include="Assets\GetPrevClueScript.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
