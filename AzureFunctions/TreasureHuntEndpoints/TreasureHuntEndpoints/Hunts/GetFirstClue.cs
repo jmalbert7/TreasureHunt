@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.IO;
+using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Text;
@@ -16,25 +17,25 @@ using TreasureHunt.API.Models;
 
 namespace TreasureHunt.API.Clues
 {
-    public static class GetClueById
+    public static class GetFirstClue
     {
-        [FunctionName("GetClueById")]
+        [FunctionName("GetFirstClue")]
         public static async Task<HttpResponseMessage> Run(
-            [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "clues/")] HttpRequest req,
+            [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "clues/first/")] HttpRequest req,
             ILogger log)
         {
-            string clueQuery = req.Query["clueid"];
+            string huntidQuery = req.Query["huntid"];
             string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
             dynamic data = JsonConvert.DeserializeObject(requestBody);
-            var clueid = clueQuery ?? data?.clueid;
+            var huntid = huntidQuery ?? data?.huntid;
 
             var azureService = new AzureService();
             try
             {
-                var rows = await azureService.executeCommand($"SELECT * FROM Clues WHERE ClueId = '{clueid}';", "ClueMo");
+                var rows = await azureService.executeCommand($"SELECT * FROM Clues WHERE HuntId = '{huntid}' AND FirstFlag = 1;", "ClueMo");
                 if (rows != null)
                 {
-                    var res = JsonConvert.SerializeObject(rows);
+                    var res = JsonConvert.SerializeObject(rows.FirstOrDefault());
                     return new HttpResponseMessage(HttpStatusCode.OK)
                     {
                         Content = new StringContent(res, Encoding.UTF8, "application/json")
