@@ -16,22 +16,30 @@ using TreasureHunt.API.Models;
 
 namespace TreasureHunt.API.Clues
 {
-    public static class GetClueById
+    public static class GetNextClueById
     {
-        [FunctionName("GetClueById")]
+        [FunctionName("GetNextClueById")]
         public static async Task<HttpResponseMessage> Run(
-            [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "clues/")] HttpRequest req,
+            [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "clues/next/")] HttpRequest req,
             ILogger log)
         {
-            string clueQuery = req.Query["clueid"];
+            string lastclueQuery = req.Query["lastclueid"];
             string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
             dynamic data = JsonConvert.DeserializeObject(requestBody);
-            var clueid = clueQuery ?? data?.clueid;
+            string lastclueid = lastclueQuery ?? data?.lastclueid;
+
+            if(lastclueid == "0" || lastclueid == null)
+            {
+                return new HttpResponseMessage(HttpStatusCode.BadRequest)
+                {
+                    Content = new StringContent("Usage: Must supply the lastclueid", Encoding.UTF8, "application/json")
+                };
+            }
 
             var azureService = new AzureService();
             try
             {
-                var rows = await azureService.executeCommand($"SELECT * FROM Clues WHERE ClueId = '{clueid}';", "ClueMo");
+                var rows = await azureService.executeCommand($"SELECT * FROM Clues WHERE LastClueId = '{lastclueid}';", "ClueMo");
                 if (rows != null)
                 {
                     var res = JsonConvert.SerializeObject(rows);
