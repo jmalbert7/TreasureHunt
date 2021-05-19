@@ -32,6 +32,7 @@ namespace TreasureHunt.API
         }
         public async Task<List<IDataModel>> readResultFromRequest(SqlCommand command, string expectedType)
         {
+
             var reader = await command.ExecuteReaderAsync();
             var rows = new List<IDataModel>();
             IDataModel row = MapStringToModelType(expectedType);
@@ -49,18 +50,12 @@ namespace TreasureHunt.API
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
-                try
+
+                using (SqlCommand command = new SqlCommand(query, connection))
                 {
-                    using (SqlCommand command = new SqlCommand(query, connection))
-                    {
-                        return await readResultFromRequest(command, expectedType);
-                    }
-                    
+                    return await readResultFromRequest(command, expectedType);
                 }
-                catch
-                {
-                    return null;
-                }
+
             }
         }
     }
