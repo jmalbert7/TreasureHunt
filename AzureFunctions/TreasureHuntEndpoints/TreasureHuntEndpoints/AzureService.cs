@@ -24,7 +24,10 @@ namespace TreasureHunt.API
             {
                 return new ClueMo();
             }
-
+            else if (str.Equals("HuntMo"))
+            {
+                return new HuntMo();
+            }
             else
             {
                 return null;
