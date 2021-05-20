@@ -28,6 +28,10 @@ namespace TreasureHunt.API
             {
                 return new HuntMo();
             }
+            else if (str.Equals("GameMo"))
+            {
+                return new GameMo();
+            }
             else
             {
                 return null;

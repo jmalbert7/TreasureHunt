@@ -21,7 +21,7 @@ namespace TreasureHunt.API.Users
     {
         [FunctionName("ValidateUser")]
         public static async Task<HttpResponseMessage> Run(
-            [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "users/validate")] HttpRequest req,
+            [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "users/validate/")] HttpRequest req,
             ILogger log)
         {
             //get all query string params
@@ -51,10 +51,16 @@ namespace TreasureHunt.API.Users
                     var storedPassword = user.HashedPassword;
                     if (storedPassword.Equals(hashedPassword))
                     {
-                        return new HttpResponseMessage(HttpStatusCode.OK)
+                        var azureService2 = new AzureService();
+                        var game = await azureService2.executeCommand($"SELECT * FROM Games WHERE UserId = '{user.UserId}'", "GameMo");
+                        if (game != null)
                         {
-                            Content = new StringContent("Valid Password", Encoding.UTF8, "application/json")
-                        };
+                            var result = JsonConvert.SerializeObject(game.FirstOrDefault());
+                            return new HttpResponseMessage(HttpStatusCode.OK)
+                            {
+                                Content = new StringContent(result, Encoding.UTF8, "application/json")
+                            };
+                        }
                     }
                     return new HttpResponseMessage(HttpStatusCode.BadRequest)
                     {
