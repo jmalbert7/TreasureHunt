@@ -12,6 +12,7 @@ public class AddClueScript : MonoBehaviour
     public InputField riddleInput;
     public TextMeshProUGUI clueNumberText;
     public GameObject updateClueButton;
+    public GameObject prevClueButton;
     public TextMeshProUGUI updateClueText;
 
     readonly string getUrl = "https://functionapplicationgroupx.azurewebsites.net/api/clues/create/?huntid=";
@@ -33,7 +34,7 @@ public class AddClueScript : MonoBehaviour
     {
         riddleInput.onEndEdit.AddListener(GetRiddle);
         DisableButton(updateClueButton);
-//        updateClueButton.SetActive = false;
+        DisableButton(prevClueButton);
         updateClueText.text = "";
         clueNumber = 1;
         newestClueNumber = 1;
@@ -65,13 +66,24 @@ public class AddClueScript : MonoBehaviour
     {
         lastFlag = 1;
     }
-    public void ClearInputField()
+    public void UpdateInputField()
     {
-        riddleInput.text = "";
+        if(clueNumber < newestClueNumber)
+        {
+            riddleInput.text = riddle;
+        }
+        else
+        {
+            riddleInput.text = "";
+        }
     }
     public void IncrementClueNumber()
     {
         clueNumber++;
+        if(clueNumber > 1)
+        {
+            EnableButton(prevClueButton);
+        }
         if(clueNumber > newestClueNumber)
         {
             newestClueNumber = clueNumber;
@@ -79,16 +91,21 @@ public class AddClueScript : MonoBehaviour
         if(clueNumber == newestClueNumber)
         {
             DisableButton(updateClueButton);
-//            updateClueButton.interactable = false;
             updateClueText.text = "";
         }
     }
     public void DecrementClueNumber()
     {
         clueNumber--;
-//        updateClueButton.interactable = true;
-        EnableButton(updateClueButton);
-        updateClueText.text = "Save Updates";
+        if(clueNumber <= 1)
+        {
+            DisableButton(prevClueButton);
+        }
+        if(clueNumber < newestClueNumber)
+        {
+            EnableButton(updateClueButton);
+            updateClueText.text = "Save Updates";
+        }
     }
     public void UpdateClueNumberText()
     {
@@ -103,7 +120,11 @@ public class AddClueScript : MonoBehaviour
         }
         else if(clueNumber == newestClueNumber - 1)
         {
-            // do nothing
+            // set lastClueId for the next CreateClue request
+            lastClueId = clueId;
+            IncrementClueNumber();
+            UpdateClueNumberText();
+            UpdateInputField();
         }
         else // get the next clue by making a request to GetNextClueById
         {
@@ -148,7 +169,6 @@ public class AddClueScript : MonoBehaviour
         
         Debug.Log(location);
         Debug.Log(azureUrl);
-        Debug.Log(firstFlag);
         UnityWebRequest www = UnityWebRequest.Get(azureUrl);
     
         //Form to make post request
@@ -179,6 +199,9 @@ public class AddClueScript : MonoBehaviour
         {
             lastClueId = Convert.ToInt32(www.downloadHandler.text);
             Debug.Log(www.downloadHandler.text);
+            IncrementClueNumber();
+            UpdateClueNumberText();
+            UpdateInputField();
         }
     }
     IEnumerator AzureGetNextClueByIdRequest()
@@ -210,6 +233,10 @@ public class AddClueScript : MonoBehaviour
             lastClueId = clue.LastClueId;
             location = clue.Location;
             riddle = clue.Riddle;
+
+            IncrementClueNumber();
+            UpdateClueNumberText();
+            UpdateInputField();
         }
     }
  }

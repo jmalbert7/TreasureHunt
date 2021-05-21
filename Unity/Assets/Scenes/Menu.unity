@@ -7487,8 +7487,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   riddleInput: {fileID: 0}
-  riddle: 
-  location: 
 --- !u!114 &867173028
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7501,9 +7499,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c907a8d3d1fb20b43832c9676dd21be6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  riddleInput: {fileID: 1536503091}
+  riddleInput: {fileID: 0}
   clueNumberText: {fileID: 0}
   updateClueButton: {fileID: 0}
+  prevClueButton: {fileID: 0}
   updateClueText: {fileID: 0}
 --- !u!1 &874348436
 GameObject:
@@ -10868,6 +10867,7 @@ MonoBehaviour:
   riddleInput: {fileID: 1536503091}
   clueNumberText: {fileID: 963265244}
   updateClueButton: {fileID: 1088690074}
+  prevClueButton: {fileID: 619099143}
   updateClueText: {fileID: 918888588}
 --- !u!114 &1430477288
 MonoBehaviour:
@@ -10881,9 +10881,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e10987f17f69e2146b10dcc7e61c7583, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  riddleInput: {fileID: 0}
-  riddle: 
-  location: 
+  riddleInput: {fileID: 1536503091}
 --- !u!114 &1430477289
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16128,42 +16126,6 @@ MonoBehaviour:
       - m_Target: {fileID: 1430477287}
         m_TargetAssemblyTypeName: AddClueScript, Assembly-CSharp
         m_MethodName: ClearFirstFlag
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1430477287}
-        m_TargetAssemblyTypeName: AddClueScript, Assembly-CSharp
-        m_MethodName: ClearInputField
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1430477287}
-        m_TargetAssemblyTypeName: AddClueScript, Assembly-CSharp
-        m_MethodName: IncrementClueNumber
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1430477287}
-        m_TargetAssemblyTypeName: AddClueScript, Assembly-CSharp
-        m_MethodName: UpdateClueNumberText
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
