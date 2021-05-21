@@ -26,8 +26,6 @@ public class AddClueScript : MonoBehaviour
     public static int firstFlag;
     public static int lastFlag; 
     public static int lastClueId;
-    private int huntId = 1;
-
     public static int clueId;   // only used for updating a clue or getting the next clue
 
     private void Start()
@@ -134,7 +132,6 @@ public class AddClueScript : MonoBehaviour
 
      IEnumerator AzureGetRequest()
     {
-//        huntId = AddHuntScript.huntId;
         if(UseCurrentButton.usingCurrentLocation == true)
         {
             location = UseCurrentButton.latitude.ToString() + "," + UseCurrentButton.longitude.ToString();
@@ -152,19 +149,19 @@ public class AddClueScript : MonoBehaviour
 
         if (firstFlag == 1 && lastFlag == 1)    // single clue hunt
         {
-            azureUrl = getUrl + huntId + locationParam + location + riddleParam + riddle + firstFlagParam + firstFlag + lastFlagParam + lastFlag;
+            azureUrl = getUrl + MainMenu.huntId + locationParam + location + riddleParam + riddle + firstFlagParam + firstFlag + lastFlagParam + lastFlag;
         }
         else if (firstFlag == 1)    // first clue in multi-clue hunt
         {
-            azureUrl = getUrl + huntId + locationParam + location + riddleParam + riddle + firstFlagParam + firstFlag;
+            azureUrl = getUrl + MainMenu.huntId + locationParam + location + riddleParam + riddle + firstFlagParam + firstFlag;
         }
         else if (lastFlag == 1)     // last clue in multi-clue hunt
         {
-            azureUrl = getUrl + huntId + locationParam + location + riddleParam + riddle + lastFlagParam + lastFlag + lastClueIdParam + lastClueId;
+            azureUrl = getUrl + MainMenu.huntId + locationParam + location + riddleParam + riddle + lastFlagParam + lastFlag + lastClueIdParam + lastClueId;
         }
         else                        // middle clue in multi-clue hunt
         {
-            azureUrl = getUrl + huntId + locationParam + location + riddleParam + riddle + lastClueIdParam + lastClueId;
+            azureUrl = getUrl + MainMenu.huntId + locationParam + location + riddleParam + riddle + lastClueIdParam + lastClueId;
         }
         
         Debug.Log(location);

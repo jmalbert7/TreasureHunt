@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class MainMenu : MonoBehaviour
 {
     public static int UserId = 2;
+    public static int huntId;
     public static string HuntName;
     public static string GeneralLocation;
 
