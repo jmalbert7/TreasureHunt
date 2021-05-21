@@ -36,7 +36,6 @@ public class ConsumeDataScript : MonoBehaviour
         StartCoroutine(AzureGetRequest());
     }
 
-
     public class User
     {
         public string UserId { get; set; }

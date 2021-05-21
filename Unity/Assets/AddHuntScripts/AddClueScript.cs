@@ -10,21 +10,46 @@ using Newtonsoft.Json;
 public class AddClueScript : MonoBehaviour
 {
     public InputField riddleInput;
+    public TextMeshProUGUI clueNumberText;
+    public GameObject updateClueButton;
+    public TextMeshProUGUI updateClueText;
 
     readonly string getUrl = "https://functionapplicationgroupx.azurewebsites.net/api/clues/create/?huntid=";
-//    readonly string postUrl = "https://functionapplicationgroupx.azurewebsites.net/api/clues/create/";
+    readonly string getNextClueUrl = "https://functionapplicationgroupx.azurewebsites.net/api/clues/next/?lastclueid=";
+    //    readonly string postUrl = "https://functionapplicationgroupx.azurewebsites.net/api/clues/create/";
 
-    public string riddle;
-    public int firstFlag;
-    public int lastFlag; 
-    public int lastClueId;
+    public static int clueNumber;
+    public static int newestClueNumber;
+    public static string riddle;
+    public static string location;
+    public static int firstFlag;
+    public static int lastFlag; 
+    public static int lastClueId;
     private int huntId = 1;
+
+    public static int clueId;   // only used for updating a clue or getting the next clue
 
     private void Start()
     {
         riddleInput.onEndEdit.AddListener(GetRiddle);
+        DisableButton(updateClueButton);
+//        updateClueButton.SetActive = false;
+        updateClueText.text = "";
+        clueNumber = 1;
+        newestClueNumber = 1;
+        clueNumberText.text = "Clue #1";
         firstFlag = 1;
         lastFlag = 0;
+    }
+
+    public void EnableButton(GameObject onButton)
+    {
+        onButton.SetActive(true);
+    }
+
+    public void DisableButton(GameObject offButton)
+    {
+        offButton.SetActive(false);
     }
 
     private void GetRiddle(string input)
@@ -40,22 +65,55 @@ public class AddClueScript : MonoBehaviour
     {
         lastFlag = 1;
     }
-
     public void ClearInputField()
     {
         riddleInput.text = "";
     }
+    public void IncrementClueNumber()
+    {
+        clueNumber++;
+        if(clueNumber > newestClueNumber)
+        {
+            newestClueNumber = clueNumber;
+        }
+        if(clueNumber == newestClueNumber)
+        {
+            DisableButton(updateClueButton);
+//            updateClueButton.interactable = false;
+            updateClueText.text = "";
+        }
+    }
+    public void DecrementClueNumber()
+    {
+        clueNumber--;
+//        updateClueButton.interactable = true;
+        EnableButton(updateClueButton);
+        updateClueText.text = "Save Updates";
+    }
+    public void UpdateClueNumberText()
+    {
+        clueNumberText.text = "Clue #" + clueNumber.ToString();
+    }
 
     public void OnButtonCallAzureFunction()
     {
-        StartCoroutine(AzureGetRequest());
+        if(clueNumber == newestClueNumber)
+        {
+            StartCoroutine(AzureGetRequest());
+        }
+        else if(clueNumber == newestClueNumber - 1)
+        {
+            // do nothing
+        }
+        else // get the next clue by making a request to GetNextClueById
+        {
+            StartCoroutine(AzureGetNextClueByIdRequest());
+        }
     }
 
-
-    IEnumerator AzureGetRequest()
+     IEnumerator AzureGetRequest()
     {
 //        huntId = AddHuntScript.huntId;
-        string location;
         if(UseCurrentButton.usingCurrentLocation == true)
         {
             location = UseCurrentButton.latitude.ToString() + "," + UseCurrentButton.longitude.ToString();
@@ -88,13 +146,11 @@ public class AddClueScript : MonoBehaviour
             azureUrl = getUrl + huntId + locationParam + location + riddleParam + riddle + lastClueIdParam + lastClueId;
         }
         
-
         Debug.Log(location);
         Debug.Log(azureUrl);
         Debug.Log(firstFlag);
         UnityWebRequest www = UnityWebRequest.Get(azureUrl);
     
-
         //Form to make post request
         //List<IMultipartFormSection> wwwForm = new List<IMultipartFormSection>();
         //wwwForm.Add(new MultipartFormDataSection("huntid", "1"));
@@ -125,4 +181,35 @@ public class AddClueScript : MonoBehaviour
             Debug.Log(www.downloadHandler.text);
         }
     }
-}
+    IEnumerator AzureGetNextClueByIdRequest()
+    {
+        string azureUrl;
+
+        azureUrl = getNextClueUrl + clueId;
+        
+        Debug.Log(azureUrl);
+        UnityWebRequest www = UnityWebRequest.Get(azureUrl);
+    
+        yield return www.SendWebRequest();
+        if (www.result == UnityWebRequest.Result.ConnectionError || www.result == UnityWebRequest.Result.ProtocolError)
+        {
+            Debug.LogError(www.error);
+        }
+        else
+        {
+            Debug.Log(www.downloadHandler.text);
+            string responseBody = www.downloadHandler.text;
+            responseBody = responseBody.Remove(responseBody.IndexOf("["), 1);
+            responseBody = responseBody.Remove(responseBody.IndexOf("]"), 1);
+            var clue = JsonConvert.DeserializeObject<GetPrevClueScript.Clue>(responseBody);
+            clueId = clue.ClueId;
+            Debug.Log(clue.Location);
+            Debug.Log(clue.Riddle);
+            firstFlag = clue.FirstFlag ? 1 : 0;
+            lastFlag = clue.LastFlag ? 1 : 0;
+            lastClueId = clue.LastClueId;
+            location = clue.Location;
+            riddle = clue.Riddle;
+        }
+    }
+ }
