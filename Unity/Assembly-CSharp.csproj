@@ -66,6 +66,7 @@
     <Compile Include="Assets\Microsoft.Maps.Unity.Examples\MapPinExample\Scripts\ZoomToClusterMapPin.cs" />
     <Compile Include="Assets\LearningScripts\CallAzure.cs" />
     <Compile Include="Assets\AddHuntScripts\AddHuntScript.cs" />
+    <Compile Include="Assets\AddHuntScripts\GetPrevClueScript.cs" />
     <Compile Include="Assets\FindLocationScripts\ReverseGeocodeOnClick.cs" />
     <Compile Include="Assets\Menu Scripts\MapScript.cs" />
     <Compile Include="Assets\Login Scripts\CreateUserScript.cs" />
@@ -79,7 +80,7 @@
     <Compile Include="Assets\Microsoft.Maps.Unity.Examples\Common\Scripts\AlignToMap.cs" />
     <Compile Include="Assets\Microsoft.Maps.Unity.Examples\MapPinExample\Scripts\ZoomToMapPin.cs" />
     <Compile Include="Assets\FindLocationScripts\MapInteractionHandlerSelector.cs" />
-    <Compile Include="Assets\GetPrevClueScript.cs" />
+    <Compile Include="Assets\AddHuntScripts\UpdateClueScript.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
