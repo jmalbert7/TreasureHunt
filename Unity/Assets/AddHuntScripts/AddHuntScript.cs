@@ -9,19 +9,17 @@ using Newtonsoft.Json;
 
 public class AddHuntScript : MonoBehaviour
 {
-   
+    public GameObject addHuntMenu;
+    public GameObject addClueMenu;
     public InputField huntName;
     public InputField locationName;
 
     readonly string getUrl = "https://functionapplicationgroupx.azurewebsites.net/api/hunts/create/?userid=";
 //    readonly string postUrl = "https://functionapplicationgroupx.azurewebsites.net/api/hunts/create/";
 
-    private string myName;
     private int myUserId = 2;     // Using user id 2 (Louis) for now 
     private string myHunt;
     private string myLocation;
-//    public static int huntId;
-
 
     private void Start()
     {
@@ -43,6 +41,7 @@ public class AddHuntScript : MonoBehaviour
     {
         Debug.Log(myHunt);
         Debug.Log(myLocation);
+        Debug.Log(MainMenu.huntId);
     }
 
     public void OnButtonCallAzureFunction()
@@ -67,8 +66,10 @@ public class AddHuntScript : MonoBehaviour
         }
         else
         {
-//            huntId = Convert.ToInt32(www.downloadHandler.text);
+            MainMenu.huntId = Convert.ToInt32(www.downloadHandler.text);
             Debug.Log(www.downloadHandler.text);
+            addClueMenu.SetActive(true);
+            addHuntMenu.SetActive(false);
         }
     }
 }
