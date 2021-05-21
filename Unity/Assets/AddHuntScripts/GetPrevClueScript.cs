@@ -11,9 +11,6 @@ using Newtonsoft.Json.Linq;
 public class GetPrevClueScript : MonoBehaviour
 {
     public InputField riddleInput;
-    public string riddle;
-    public string location;
-//    public int clueId;
 
     readonly string getUrl = "https://functionapplicationgroupx.azurewebsites.net/api/clues/?clueid=";
     // Start is called before the first frame update
@@ -26,6 +23,18 @@ public class GetPrevClueScript : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void UpdateInputField()
+    {
+        if(AddClueScript.clueNumber < AddClueScript.newestClueNumber)
+        {
+            riddleInput.text = AddClueScript.riddle;
+        }
+        else
+        {
+            riddleInput.text = "";
+        }
     }
 
     public class Clue
@@ -67,7 +76,6 @@ public class GetPrevClueScript : MonoBehaviour
             responseBody = responseBody.Remove(responseBody.IndexOf("]"), 1);
             var clue = JsonConvert.DeserializeObject<Clue>(responseBody);
             AddClueScript.clueId = AddClueScript.lastClueId;
-            Debug.Log(clue.Location);
             Debug.Log(clue.Riddle);
             AddClueScript.firstFlag = clue.FirstFlag ? 1 : 0;
             AddClueScript.lastFlag = clue.LastFlag ? 1 : 0;
@@ -75,6 +83,7 @@ public class GetPrevClueScript : MonoBehaviour
             AddClueScript.location = clue.Location;
             AddClueScript.riddle = clue.Riddle;
 
+            UpdateInputField();
         }
     }
 }
