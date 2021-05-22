@@ -9,14 +9,14 @@ public class GetHuntsScript : MonoBehaviour
 {
     public GameObject mainMenu;
     public GameObject chooseHuntScreen;
-    public TextMeshProUGUI[] huntsArray;
+    public TextMeshProUGUI[] huntsArray = new TextMeshProUGUI[12];
 
-    readonly string getUrl = "https://functionapplicationgroupx.azurewebsites.net/api";
+    readonly string getUrl = "https://functionapplicationgroupx.azurewebsites.net/api/hunts/list";
 
     // Start is called before the first frame update
     void Start()
     {
-        huntsArray = new TextMeshProUGUI[12];
+
     }
 
     // Update is called once per frame
@@ -55,20 +55,14 @@ public class GetHuntsScript : MonoBehaviour
         else
         {
             Debug.Log(www.downloadHandler.text);
-            //            var responseBody = JObject.Parse(www.downloadHandler.text);
             string responseBody = www.downloadHandler.text;
-            responseBody = responseBody.Remove(responseBody.IndexOf("["), 1);
-            responseBody = responseBody.Remove(responseBody.IndexOf("]"), 1);
-            var hunts = JsonConvert.DeserializeObject<Hunt>(responseBody);
-            Debug.Log(hunts);
-/*
+            List<Hunt> hunts = JsonConvert.DeserializeObject<List<Hunt>>(responseBody);
+
             for(int i = 0; i < 12; i++)
             {
-                huntsArray[i] = hunts[i];
+                huntsArray[i].text = hunts[i].HuntName + ", " + hunts[i].GeneralLocation;
             }
-*/
 
-//            AddClueScript.location = clue.Location;
             chooseHuntScreen.SetActive(true);
             mainMenu.SetActive(false);
         }
