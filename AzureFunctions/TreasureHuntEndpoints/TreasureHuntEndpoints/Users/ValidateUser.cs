@@ -77,9 +77,8 @@ namespace TreasureHunt.API.Users
             }
             catch
             {
-                return new HttpResponseMessage(HttpStatusCode.BadRequest);
-            }
-            return new HttpResponseMessage(HttpStatusCode.InternalServerError);
+                return new HttpResponseMessage(HttpStatusCode.InternalServerError);
+            }            
         }
     }
 }

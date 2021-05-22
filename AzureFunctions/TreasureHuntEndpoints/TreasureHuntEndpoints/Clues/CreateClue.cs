@@ -37,8 +37,8 @@ namespace TreasureHunt.API.Clues
             string lastflag = lastQuery ?? data?.lastflag;
             string lastclueid = lastclueididQuery ?? data?.lastclueid;
             string location = locationQuery ?? data?.location;
-            string riddle = riddleQuery ??  data?.riddle;
-            
+            string riddle = riddleQuery ?? data?.riddle;
+
             if (huntid == null || location == null || riddle == null || (firstflag == null && lastflag == null && lastclueid == null) || (firstflag == "1" && lastclueid != null) || (lastclueid != null && firstflag == "1" && lastflag == "1") || (lastflag == "1" && lastclueid == null && firstflag != "1"))
             {
                 return new HttpResponseMessage(HttpStatusCode.BadRequest)
