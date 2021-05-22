@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.UI;
-using TMPro;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
@@ -70,7 +69,6 @@ public class GetPrevClueScript : MonoBehaviour
         else
         {
             Debug.Log(www.downloadHandler.text);
-            //            var responseBody = JObject.Parse(www.downloadHandler.text);
             string responseBody = www.downloadHandler.text;
             responseBody = responseBody.Remove(responseBody.IndexOf("["), 1);
             responseBody = responseBody.Remove(responseBody.IndexOf("]"), 1);

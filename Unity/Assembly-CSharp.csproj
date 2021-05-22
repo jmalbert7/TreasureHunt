@@ -71,6 +71,7 @@
     <Compile Include="Assets\Menu Scripts\MapScript.cs" />
     <Compile Include="Assets\Login Scripts\CreateUserScript.cs" />
     <Compile Include="Assets\Microsoft.Maps.Unity.Examples\Common\Scripts\TransferLabelText.cs" />
+    <Compile Include="Assets\AddHuntScripts\UpdateClueScript.cs" />
     <Compile Include="Assets\AddHuntScripts\AddClueScript.cs" />
     <Compile Include="Assets\FindLocationScripts\FindLocation.cs" />
     <Compile Include="Assets\Game Scripts\Game.cs" />
@@ -80,7 +81,7 @@
     <Compile Include="Assets\Microsoft.Maps.Unity.Examples\Common\Scripts\AlignToMap.cs" />
     <Compile Include="Assets\Microsoft.Maps.Unity.Examples\MapPinExample\Scripts\ZoomToMapPin.cs" />
     <Compile Include="Assets\FindLocationScripts\MapInteractionHandlerSelector.cs" />
-    <Compile Include="Assets\AddHuntScripts\UpdateClueScript.cs" />
+    <Compile Include="Assets\GetHuntsScript.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
