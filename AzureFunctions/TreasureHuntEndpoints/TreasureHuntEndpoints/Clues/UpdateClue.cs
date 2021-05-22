@@ -67,7 +67,7 @@ namespace TreasureHunt.API.Clues
                 {
                     var existingClue = (ClueMo)rows.First();
                     huntid = huntid ?? existingClue.HuntId;
-                    if (firstflag == null) firstflag = existingClue.FirstFlag.ToString();
+                    if (firstflag == null) firstflag = existingClue.FirstFlag.ToString() == "False" ? "0" : "1";
                     if (lastflag == null) lastflag = existingClue.LastFlag.ToString() == "False"? "0" : "1";
                     lastclueid = lastclueid ?? existingClue.LastClueId;
                     location = location ?? existingClue.Location;

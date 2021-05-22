@@ -18,7 +18,7 @@ namespace TreasureHunt.API.Hunts
     {
         [FunctionName("ListHunts")]
         public static async Task<HttpResponseMessage> Run(
-            [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = null)] HttpRequest req,
+            [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "hunts/list/")] HttpRequest req,
             ILogger log)
         {
             var azureService = new AzureService();
