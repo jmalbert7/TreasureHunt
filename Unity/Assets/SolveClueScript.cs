@@ -6,25 +6,24 @@ using UnityEngine.Networking;
 using UnityEngine.UI;
 using TMPro;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 
 public class SolveClueScript : MonoBehaviour
 {
-    readonly string getNextClueUrl = "https://functionapplicationgroupx.azurewebsites.net/api/clues/next/?lastclueid=";
-    readonly string updateGameUrl = "https://functionapplicationgroupx.azurewebsites.net/api/games/update/?userid=";
-
-
-    public static string riddle;
-    public static string location;
-    public static int firstFlag;
-    public static int lastFlag;
-    public static int lastClueId;
-    public static int clueId = 1;
-    public static int userId = 26;
-
     public TextMeshProUGUI riddleText;
     public GameObject finishHuntScreen;
     public GameObject playGameScreen;
+
+    readonly string getNextClueUrl = "https://functionapplicationgroupx.azurewebsites.net/api/clues/next/?lastclueid=";
+    readonly string updateGameUrl = "https://functionapplicationgroupx.azurewebsites.net/api/games/update/?userid=";
+
+    public static int userId = 2;
+    public static int clueId;
+    public static int huntId;
+    public static int firstFlag;
+    public static int lastFlag;
+    public static int lastClueId;
+    public static string location;
+    public static string riddle;
 
     public class CurClue
     {
@@ -37,9 +36,10 @@ public class SolveClueScript : MonoBehaviour
         public string Riddle { get; set; }
     }
 
-    private void Start()
+    void Start()
     {
-        riddleText = GameObject.Find("RiddleText").GetComponent<TextMeshProUGUI>();
+        riddleText.text = riddle;
+//        riddleText = GameObject.Find("RiddleText").GetComponent<TextMeshProUGUI>();
     }
 
 
@@ -98,7 +98,6 @@ public class SolveClueScript : MonoBehaviour
             location = clue[0].Location;
             riddle = clue[0].Riddle;
             riddleText.text = riddle;
-
         }
     }
 
