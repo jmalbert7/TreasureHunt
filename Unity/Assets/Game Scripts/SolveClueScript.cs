@@ -19,6 +19,8 @@ public class SolveClueScript : MonoBehaviour
     public static int lastClueId;
     public static int clueId = 85;
 
+    public TextMeshProUGUI riddleText;
+
     public class CurClue
     {
         public int ClueId { get; set; }
@@ -32,7 +34,7 @@ public class SolveClueScript : MonoBehaviour
 
     private void Start()
     {
-
+        riddleText = GameObject.Find("RiddleText").GetComponent<TextMeshProUGUI>();
     }
 
 
@@ -61,17 +63,15 @@ public class SolveClueScript : MonoBehaviour
         {
             Debug.Log(www.downloadHandler.text);
             string responseBody = www.downloadHandler.text;
-            responseBody = responseBody.Remove(responseBody.IndexOf("["), 1);
-            responseBody = responseBody.Remove(responseBody.IndexOf("]"), 1);
-            CurClue clue = JsonConvert.DeserializeObject<CurClue>(responseBody);
-            clueId = clue.ClueId;
-            Debug.Log(clue.Riddle);
-            firstFlag = clue.FirstFlag ? 1 : 0;
-            lastFlag = clue.LastFlag ? 1 : 0;
-            lastClueId = clue.LastClueId;
-            location = clue.Location;
-            riddle = clue.Riddle;
-
+            List<CurClue> clue = JsonConvert.DeserializeObject<List<CurClue>>(responseBody);
+            clueId = clue[0].ClueId;
+            Debug.Log(clueId);
+            firstFlag = clue[0].FirstFlag ? 1 : 0;
+            lastFlag = clue[0].LastFlag ? 1 : 0;
+            lastClueId = clue[0].LastClueId;
+            location = clue[0].Location;
+            riddle = clue[0].Riddle;
+            riddleText.text = riddle;
         }
     }
 }
