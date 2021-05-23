@@ -10,6 +10,7 @@ public class GetHuntsScript : MonoBehaviour
     public GameObject mainMenu;
     public GameObject chooseHuntScreen;
     public TextMeshProUGUI[] huntsArray = new TextMeshProUGUI[12];
+    public static int[] huntIds = new int[12];
 
     readonly string getUrl = "https://functionapplicationgroupx.azurewebsites.net/api/hunts/list";
 
@@ -61,6 +62,7 @@ public class GetHuntsScript : MonoBehaviour
             for(int i = 0; i < 12; i++)
             {
                 huntsArray[i].text = hunts[i].HuntName + ", " + hunts[i].GeneralLocation;
+                huntIds[i] = hunts[i].HuntId;
             }
 
             chooseHuntScreen.SetActive(true);
