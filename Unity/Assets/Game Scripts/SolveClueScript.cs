@@ -17,9 +17,11 @@ public class SolveClueScript : MonoBehaviour
     public static int firstFlag;
     public static int lastFlag;
     public static int lastClueId;
-    public static int clueId = 85;
+    public static int clueId = 1;
 
     public TextMeshProUGUI riddleText;
+    public GameObject finishHuntScreen;
+    public GameObject playGameScreen;
 
     public class CurClue
     {
@@ -38,6 +40,21 @@ public class SolveClueScript : MonoBehaviour
     }
 
 
+    public void CheckGameStatus()
+    {
+        if (lastFlag == 0)
+        {
+            OnButtonCallAzureFunction();
+            //Debug.Log("not last");
+        }
+        else
+        {
+            Debug.Log("last");
+            finishHuntScreen.SetActive(true);
+            playGameScreen.SetActive(false);
+
+        }
+    }
 
     public void OnButtonCallAzureFunction()
     {
