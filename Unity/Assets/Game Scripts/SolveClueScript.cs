@@ -6,10 +6,12 @@ using UnityEngine.Networking;
 using UnityEngine.UI;
 using TMPro;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 public class SolveClueScript : MonoBehaviour
 {
     readonly string getNextClueUrl = "https://functionapplicationgroupx.azurewebsites.net/api/clues/next/?lastclueid=";
+    readonly string updateGameUrl = "https://functionapplicationgroupx.azurewebsites.net/api/games/update/?userid=";
 
 
     public static string riddle;
@@ -18,6 +20,7 @@ public class SolveClueScript : MonoBehaviour
     public static int lastFlag;
     public static int lastClueId;
     public static int clueId = 1;
+    public static int userId = 26;
 
     public TextMeshProUGUI riddleText;
     public GameObject finishHuntScreen;
@@ -45,6 +48,7 @@ public class SolveClueScript : MonoBehaviour
         if (lastFlag == 0)
         {
             OnButtonCallAzureFunction();
+            OnButtonUpdateGame();
             //Debug.Log("not last");
         }
         else
@@ -59,6 +63,11 @@ public class SolveClueScript : MonoBehaviour
     public void OnButtonCallAzureFunction()
     {
         StartCoroutine(AzureGetNextClueByIdRequest());
+    }
+
+    public void OnButtonUpdateGame()
+    {
+        StartCoroutine(UpdateGameRequest());
     }
 
 
@@ -78,17 +87,39 @@ public class SolveClueScript : MonoBehaviour
         }
         else
         {
-            Debug.Log(www.downloadHandler.text);
+            //Debug.Log(www.downloadHandler.text);
             string responseBody = www.downloadHandler.text;
             List<CurClue> clue = JsonConvert.DeserializeObject<List<CurClue>>(responseBody);
             clueId = clue[0].ClueId;
-            Debug.Log(clueId);
+            //Debug.Log(clueId);
             firstFlag = clue[0].FirstFlag ? 1 : 0;
             lastFlag = clue[0].LastFlag ? 1 : 0;
             lastClueId = clue[0].LastClueId;
             location = clue[0].Location;
             riddle = clue[0].Riddle;
             riddleText.text = riddle;
+
+        }
+    }
+
+    IEnumerator UpdateGameRequest()
+    {
+        string azureUrl;
+        string clueIdParam = "&clueid=";
+
+        azureUrl = updateGameUrl + userId + clueIdParam + clueId;
+
+        Debug.Log(azureUrl);
+        UnityWebRequest www = UnityWebRequest.Get(azureUrl);
+
+        yield return www.SendWebRequest();
+        if (www.result == UnityWebRequest.Result.ConnectionError || www.result == UnityWebRequest.Result.ProtocolError)
+        {
+            Debug.LogError(www.error);
+        }
+        else
+        {
+            Debug.Log(www.downloadHandler.text);
         }
     }
 }

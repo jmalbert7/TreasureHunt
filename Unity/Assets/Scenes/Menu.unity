@@ -6628,7 +6628,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 2001162331}
         m_TargetAssemblyTypeName: SolveClueScript, Assembly-CSharp
-        m_MethodName: OnButtonCallAzureFunction
+        m_MethodName: OnButtonUpdateGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -16909,6 +16909,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   riddleText: {fileID: 0}
+  finishHuntScreen: {fileID: 0}
+  playGameScreen: {fileID: 0}
 --- !u!1 &1917855537
 GameObject:
   m_ObjectHideFlags: 0
@@ -17642,6 +17644,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   riddleText: {fileID: 0}
+  finishHuntScreen: {fileID: 1909211791}
+  playGameScreen: {fileID: 2001162329}
 --- !u!1 &2017910606
 GameObject:
   m_ObjectHideFlags: 0
