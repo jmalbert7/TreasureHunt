@@ -13,6 +13,7 @@ public class AddClueScript : MonoBehaviour
     public TextMeshProUGUI clueNumberText;
     public GameObject updateClueButton;
     public GameObject prevClueButton;
+    public GameObject finishHuntButton;
     public TextMeshProUGUI updateClueText;
 
     readonly string getUrl = "https://functionapplicationgroupx.azurewebsites.net/api/clues/create/?huntid=";
@@ -32,6 +33,17 @@ public class AddClueScript : MonoBehaviour
     {
         riddleInput.onEndEdit.AddListener(GetRiddle);
         DisableButton(updateClueButton);
+        DisableButton(prevClueButton);
+        updateClueText.text = "";
+        clueNumber = 1;
+        newestClueNumber = 1;
+        clueNumberText.text = "Clue #1";
+        firstFlag = 1;
+        lastFlag = 0;
+    }
+
+    public void ResetHunt()
+    {
         DisableButton(prevClueButton);
         updateClueText.text = "";
         clueNumber = 1;
@@ -86,7 +98,11 @@ public class AddClueScript : MonoBehaviour
         {
             newestClueNumber = clueNumber;
         }
-        if(clueNumber == newestClueNumber)
+        if(clueNumber == newestClueNumber - 1)
+        {
+            EnableButton(finishHuntButton);
+        }
+        else if(clueNumber == newestClueNumber)
         {
             DisableButton(updateClueButton);
             updateClueText.text = "";
@@ -104,6 +120,10 @@ public class AddClueScript : MonoBehaviour
             EnableButton(updateClueButton);
             updateClueText.text = "Save Updates";
         }
+        if(clueNumber < newestClueNumber - 1)
+        {
+            DisableButton(finishHuntButton);
+        }
     }
     public void UpdateClueNumberText()
     {
@@ -112,7 +132,7 @@ public class AddClueScript : MonoBehaviour
 
     public void OnButtonCallAzureFunction()
     {
-        if(clueNumber == newestClueNumber)
+        if(clueNumber == newestClueNumber || lastFlag == 1)
         {
             StartCoroutine(AzureGetRequest());
         }
