@@ -59,7 +59,7 @@ public class GetHuntsScript : MonoBehaviour
             string responseBody = www.downloadHandler.text;
             List<Hunt> hunts = JsonConvert.DeserializeObject<List<Hunt>>(responseBody);
 
-            for(int i = 0; i < 12; i++)
+            for(int i = 0; i < hunts.Count; i++)
             {
                 huntsArray[i].text = hunts[i].HuntName + ", " + hunts[i].GeneralLocation;
                 huntIds[i] = hunts[i].HuntId;

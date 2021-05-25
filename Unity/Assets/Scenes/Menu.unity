@@ -2956,7 +2956,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Another Hunt: Some City, State'
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 326a9e40a66064a49901de782563b4cc, type: 2}
   m_sharedMaterial: {fileID: 4914284121304732785, guid: 326a9e40a66064a49901de782563b4cc, type: 2}
@@ -3715,7 +3715,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Another Hunt: Some City, State'
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 326a9e40a66064a49901de782563b4cc, type: 2}
   m_sharedMaterial: {fileID: 4914284121304732785, guid: 326a9e40a66064a49901de782563b4cc, type: 2}
@@ -4553,7 +4553,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Another Hunt: Some City, State'
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 326a9e40a66064a49901de782563b4cc, type: 2}
   m_sharedMaterial: {fileID: 4914284121304732785, guid: 326a9e40a66064a49901de782563b4cc, type: 2}
@@ -4830,7 +4830,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Another Hunt: Some City, State'
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 326a9e40a66064a49901de782563b4cc, type: 2}
   m_sharedMaterial: {fileID: 4914284121304732785, guid: 326a9e40a66064a49901de782563b4cc, type: 2}
@@ -5098,7 +5098,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'The Falcon Hunt: River Falls, WI'
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 326a9e40a66064a49901de782563b4cc, type: 2}
   m_sharedMaterial: {fileID: 4914284121304732785, guid: 326a9e40a66064a49901de782563b4cc, type: 2}
@@ -5352,8 +5352,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.5148926, y: 34.37381}
-  m_SizeDelta: {x: -360.5152, y: -409.9976}
+  m_AnchoredPosition: {x: -0.5148926, y: 37.7054}
+  m_SizeDelta: {x: -360.5152, y: -512.1671}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &582938646
 MonoBehaviour:
@@ -5788,8 +5788,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 1, y: 182}
-  m_SizeDelta: {x: -35.866, y: -264.1495}
+  m_AnchoredPosition: {x: 1, y: 185.4646}
+  m_SizeDelta: {x: -35.866, y: -315.5008}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &624255274
 MonoBehaviour:
@@ -8717,7 +8717,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'The Badger Hunt: Madison, WI'
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 326a9e40a66064a49901de782563b4cc, type: 2}
   m_sharedMaterial: {fileID: 4914284121304732785, guid: 326a9e40a66064a49901de782563b4cc, type: 2}
@@ -8851,7 +8851,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Another Hunt: Some City, State'
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 326a9e40a66064a49901de782563b4cc, type: 2}
   m_sharedMaterial: {fileID: 4914284121304732785, guid: 326a9e40a66064a49901de782563b4cc, type: 2}
@@ -9199,7 +9199,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Another Hunt: Some City, State'
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 326a9e40a66064a49901de782563b4cc, type: 2}
   m_sharedMaterial: {fileID: 4914284121304732785, guid: 326a9e40a66064a49901de782563b4cc, type: 2}
@@ -11143,8 +11143,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.3637085, y: 165.37381}
-  m_SizeDelta: {x: -282.5934, y: -400.6637}
+  m_AnchoredPosition: {x: 0.3637085, y: 168.49074}
+  m_SizeDelta: {x: -282.5934, y: -524.6187}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1331205613
 MonoBehaviour:
@@ -11620,6 +11620,7 @@ MonoBehaviour:
   clueNumberText: {fileID: 963265244}
   updateClueButton: {fileID: 1088690074}
   prevClueButton: {fileID: 619099143}
+  finishHuntButton: {fileID: 1531434826}
   updateClueText: {fileID: 918888588}
 --- !u!114 &1430477288
 MonoBehaviour:
@@ -13524,10 +13525,10 @@ RectTransform:
   m_Father: {fileID: 1490858365}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -109, y: 21}
-  m_SizeDelta: {x: -117.545, y: -301.0368}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0, y: 43.569504}
+  m_SizeDelta: {x: 549.5759, y: -317.303}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1623429583
 MonoBehaviour:
@@ -13612,7 +13613,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 72.86496, y: -39.07193, z: -153.49625, w: 0}
+  m_margin: {x: 0.6973572, y: -2.4241333, z: -1.3892517, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -15085,7 +15086,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Another Hunt: Some City, State'
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 326a9e40a66064a49901de782563b4cc, type: 2}
   m_sharedMaterial: {fileID: 4914284121304732785, guid: 326a9e40a66064a49901de782563b4cc, type: 2}
@@ -15219,7 +15220,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Another Hunt: Some City, State'
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 326a9e40a66064a49901de782563b4cc, type: 2}
   m_sharedMaterial: {fileID: 4914284121304732785, guid: 326a9e40a66064a49901de782563b4cc, type: 2}
@@ -15740,7 +15741,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'The Beaver Hunt: Corvallis, OR'
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 326a9e40a66064a49901de782563b4cc, type: 2}
   m_sharedMaterial: {fileID: 4914284121304732785, guid: 326a9e40a66064a49901de782563b4cc, type: 2}
@@ -16731,7 +16732,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'The Gopher Hunt: Minneapolis, MN'
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 326a9e40a66064a49901de782563b4cc, type: 2}
   m_sharedMaterial: {fileID: 4914284121304732785, guid: 326a9e40a66064a49901de782563b4cc, type: 2}
@@ -19565,7 +19566,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 332, y: 156}
+  m_AnchoredPosition: {x: 279, y: 63}
   m_SizeDelta: {x: -421.6978, y: -162.2088}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2103022852
@@ -19755,7 +19756,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 9
+  m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
