@@ -85,6 +85,7 @@
     <Compile Include="Assets\Microsoft.Maps.Unity.Examples\MapPinExample\Scripts\ZoomToMapPin.cs" />
     <Compile Include="Assets\FindLocationScripts\MapInteractionHandlerSelector.cs" />
     <Compile Include="Assets\Game Scripts\SolveClueScript.cs" />
+    <Compile Include="Assets\ContinueGameScript.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

@@ -22,6 +22,9 @@ public class LoginScript : MonoBehaviour
     readonly string postUrl = "https://functionapplicationgroupx.azurewebsites.net/api/users/validate?username=";
     private string myUsername;
     private string myPassword;
+    public static int gameId;
+    public static int userId;
+    public static int clueId;
 
 
     private void Start()
@@ -30,6 +33,13 @@ public class LoginScript : MonoBehaviour
         username.onEndEdit.AddListener(GetUsername);
         password.onEndEdit.AddListener(GetPassword);
         errorText = GameObject.Find("ErrorText").GetComponent<TextMeshProUGUI>();
+    }
+
+    public class Game
+    {
+        public int GameId { get; set; }
+        public int UserId { get; set; }
+        public string ClueId { get; set; }
     }
 
     private void GetUsername(string input)
@@ -90,6 +100,18 @@ public class LoginScript : MonoBehaviour
         else
         {
             Debug.Log(www.downloadHandler.text);
+            string responseBody = www.downloadHandler.text;
+            var game = JsonConvert.DeserializeObject<Game>(responseBody);
+            gameId = game.GameId;
+            userId = game.UserId;
+            if (!String.IsNullOrEmpty(game.ClueId))
+            {
+                clueId = Convert.ToInt32(game.ClueId);
+            }
+            Debug.Log("GameId, UserId, ClueId: ");
+            Debug.Log(gameId);
+            Debug.Log(userId);
+            Debug.Log(clueId);
             loginScreen.SetActive(false);
             mainMenuScreen.SetActive(true);
 
