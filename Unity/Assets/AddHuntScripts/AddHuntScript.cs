@@ -15,7 +15,6 @@ public class AddHuntScript : MonoBehaviour
     readonly string getUrl = "https://functionapplicationgroupx.azurewebsites.net/api/hunts/create/?userid=";
 //    readonly string postUrl = "https://functionapplicationgroupx.azurewebsites.net/api/hunts/create/";
 
-    private int myUserId = 2;     // Using user id 2 (Louis) for now 
     private string myHunt;
     private string myLocation;
 
@@ -52,7 +51,7 @@ public class AddHuntScript : MonoBehaviour
     {
         string huntValue = "&name=";
         string locationValue = "&location=";
-        string azureUrl = getUrl + myUserId + huntValue + myHunt + locationValue + myLocation;
+        string azureUrl = getUrl + LoginScript.userId + huntValue + myHunt + locationValue + myLocation;
         Debug.Log(azureUrl);
         UnityWebRequest www = UnityWebRequest.Get(azureUrl);
 

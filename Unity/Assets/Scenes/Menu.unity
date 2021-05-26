@@ -1604,8 +1604,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -11.838013, y: 50.35919}
-  m_SizeDelta: {x: -216.4244, y: -219.3114}
+  m_AnchoredPosition: {x: -11.838013, y: 65.88483}
+  m_SizeDelta: {x: -216.4244, y: -414.4911}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &178974796
 MonoBehaviour:
@@ -1690,7 +1690,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -0.809845, y: 0, z: 0.5187683, w: 0}
+  m_margin: {x: -0.809845, y: -1.1089783, z: 0.5187683, w: 0.000045776367}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -9073,6 +9073,7 @@ GameObject:
   - component: {fileID: 1059600710}
   - component: {fileID: 1059600711}
   - component: {fileID: 1059600712}
+  - component: {fileID: 1059600713}
   m_Layer: 5
   m_Name: MainMenu
   m_TagString: Untagged
@@ -9142,6 +9143,20 @@ MonoBehaviour:
   - {fileID: 1072216126}
   - {fileID: 1022093138}
   - {fileID: 1752833472}
+--- !u!114 &1059600713
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1059600709}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bad53c78c1d9e34c8ea198908d4d552, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainMenu: {fileID: 1059600709}
+  playGameScreen: {fileID: 2001162329}
 --- !u!1 &1072216124
 GameObject:
   m_ObjectHideFlags: 0
@@ -11864,31 +11879,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1777306786}
-        m_TargetAssemblyTypeName: AddHuntScript, Assembly-CSharp
-        m_MethodName: DisplayInfo
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 0
-      - m_Target: {fileID: 1777306786}
-        m_TargetAssemblyTypeName: AddHuntScript, Assembly-CSharp
-        m_MethodName: OnButtonCallAzureFunction
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 0
-      - m_Target: {fileID: 1430477285}
+      - m_Target: {fileID: 1059600709}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
@@ -13190,22 +13181,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2001162329}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 1059600709}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 1059600713}
+        m_TargetAssemblyTypeName: ContinueGameScript, Assembly-CSharp
+        m_MethodName: OnButtonCallAzureFunction
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -15622,7 +15601,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1777306785}
-  - component: {fileID: 1777306786}
   - component: {fileID: 1777306787}
   m_Layer: 5
   m_Name: LoginMenu
@@ -15651,22 +15629,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1777306786
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1777306784}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 717eadb0bc489934db56986a89448b29, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  addHuntMenu: {fileID: 0}
-  addClueMenu: {fileID: 0}
-  huntName: {fileID: 1801274178}
-  locationName: {fileID: 708130038}
 --- !u!114 &1777306787
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17421,7 +17383,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1909211792}
-  - component: {fileID: 1909211793}
   m_Layer: 5
   m_Name: FinishedGameScreen
   m_TagString: Untagged
@@ -17450,21 +17411,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1909211793
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1909211791}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3076ef3e39522504f9a74580e3054710, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  riddleText: {fileID: 0}
-  finishHuntScreen: {fileID: 0}
-  playGameScreen: {fileID: 0}
 --- !u!1 &1917855537
 GameObject:
   m_ObjectHideFlags: 0
@@ -19700,8 +19646,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 52}
-  m_SizeDelta: {x: -216.4244, y: -219.3114}
+  m_AnchoredPosition: {x: 0, y: 59.409}
+  m_SizeDelta: {x: -216.4244, y: -267.87}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2113921065
 MonoBehaviour:

@@ -16,7 +16,6 @@ public class SolveClueScript : MonoBehaviour
     readonly string getNextClueUrl = "https://functionapplicationgroupx.azurewebsites.net/api/clues/next/?lastclueid=";
     readonly string updateGameUrl = "https://functionapplicationgroupx.azurewebsites.net/api/games/update/?userid=";
 
-    public static int userId = 2;
     public static int clueId;
     public static int huntId;
     public static int firstFlag;
@@ -40,6 +39,11 @@ public class SolveClueScript : MonoBehaviour
     {
         riddleText.text = riddle;
 //        riddleText = GameObject.Find("RiddleText").GetComponent<TextMeshProUGUI>();
+    }
+
+    private void Update()
+    {
+        riddleText.text = riddle;
     }
 
 
@@ -87,7 +91,7 @@ public class SolveClueScript : MonoBehaviour
         }
         else
         {
-            //Debug.Log(www.downloadHandler.text);
+            Debug.Log(www.downloadHandler.text);
             string responseBody = www.downloadHandler.text;
             List<CurClue> clue = JsonConvert.DeserializeObject<List<CurClue>>(responseBody);
             clueId = clue[0].ClueId;
@@ -103,10 +107,13 @@ public class SolveClueScript : MonoBehaviour
 
     IEnumerator UpdateGameRequest()
     {
+        Debug.Log("What is userId and clueId?");
+        Debug.Log(LoginScript.userId);
+        Debug.Log(clueId);
         string azureUrl;
         string clueIdParam = "&clueid=";
 
-        azureUrl = updateGameUrl + userId + clueIdParam + clueId;
+        azureUrl = updateGameUrl + LoginScript.userId + clueIdParam + clueId;
 
         Debug.Log(azureUrl);
         UnityWebRequest www = UnityWebRequest.Get(azureUrl);
