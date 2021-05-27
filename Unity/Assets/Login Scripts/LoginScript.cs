@@ -24,8 +24,6 @@ public class LoginScript : MonoBehaviour
     private string myPassword;
     public static int gameId;
     public static int userId;
-    public static int clueId;
-
 
     private void Start()
     {
@@ -106,12 +104,11 @@ public class LoginScript : MonoBehaviour
             userId = game.UserId;
             if (!String.IsNullOrEmpty(game.ClueId))
             {
-                clueId = Convert.ToInt32(game.ClueId);
+                SolveClueScript.clueId = Convert.ToInt32(game.ClueId);
             }
-            Debug.Log("GameId, UserId, ClueId: ");
+            Debug.Log("GameId, UserId");
             Debug.Log(gameId);
             Debug.Log(userId);
-            Debug.Log(clueId);
             loginScreen.SetActive(false);
             mainMenuScreen.SetActive(true);
 

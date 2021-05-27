@@ -52,12 +52,14 @@ public class SolveClueScript : MonoBehaviour
         if (lastFlag == 0)
         {
             OnButtonCallAzureFunction();
-            OnButtonUpdateGame();
+//            OnButtonUpdateGame();
             //Debug.Log("not last");
         }
         else
         {
             Debug.Log("last");
+            clueId = 0;
+            OnButtonUpdateGame();
             finishHuntScreen.SetActive(true);
             playGameScreen.SetActive(false);
 
@@ -102,6 +104,8 @@ public class SolveClueScript : MonoBehaviour
             location = clue[0].Location;
             riddle = clue[0].Riddle;
             riddleText.text = riddle;
+
+            OnButtonUpdateGame();
         }
     }
 

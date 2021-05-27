@@ -34,7 +34,7 @@ public class ContinueGameScript : MonoBehaviour
     {
         string azureUrl;
 
-        azureUrl = getUrl + LoginScript.clueId;
+        azureUrl = getUrl + SolveClueScript.clueId;
         
         Debug.Log(azureUrl);
         UnityWebRequest www = UnityWebRequest.Get(azureUrl);
