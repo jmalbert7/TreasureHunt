@@ -16,8 +16,8 @@ using UnityEngine.UI;
 public class ReverseGeocodeOnClick : MonoBehaviour
 {
     public TextMeshProUGUI latLonText;
-    public static double latitude;
-    public static double longitude;
+    public static double latitude = 90.0;
+    public static double longitude = 135.0;
     private MapRenderer _mapRenderer = null;
 
     /// <summary>
@@ -32,6 +32,17 @@ public class ReverseGeocodeOnClick : MonoBehaviour
     /// </summary>
     [SerializeField]
     private MapPin _mapPinPrefab = null;
+
+    // removes map pins from the map pin layer, doesn't work
+    public void RemoveMapPins()
+    {
+/*
+        for(int i = 0; i < _mapPinLayer.MapPins.Count; i++)
+        {
+            _mapPinLayer.MapPins.RemoveAt(i);
+        }
+*/
+    }
 
     public void Awake()
     {
@@ -72,6 +83,7 @@ public class ReverseGeocodeOnClick : MonoBehaviour
             var textMesh = newMapPin.GetComponentInChildren<TextMeshPro>();
             textMesh.text = formattedAddressString ?? "No address found.";
 
+//            _mapPinLayer.MapPins.Clear();     // doesn't work
             _mapPinLayer.MapPins.Add(newMapPin);
         }
     }

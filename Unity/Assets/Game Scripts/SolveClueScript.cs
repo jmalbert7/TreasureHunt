@@ -12,6 +12,8 @@ public class SolveClueScript : MonoBehaviour
     public TextMeshProUGUI riddleText;
     public GameObject finishHuntScreen;
     public GameObject playGameScreen;
+    public GameObject wrongLocationScreen;
+    public GameObject rightLocationScreen;
 
     readonly string getNextClueUrl = "https://functionapplicationgroupx.azurewebsites.net/api/clues/next/?lastclueid=";
     readonly string updateGameUrl = "https://functionapplicationgroupx.azurewebsites.net/api/games/update/?userid=";
@@ -23,6 +25,12 @@ public class SolveClueScript : MonoBehaviour
     public static int lastClueId;
     public static string location;
     public static string riddle;
+    private bool correctLocation;
+    private double correctLatitude;
+    private double correctLongitude;
+    private double latitudeDiff;
+    private double longitudeDiff;
+    private string[] coordinates;
 
     public class CurClue
     {
@@ -46,21 +54,54 @@ public class SolveClueScript : MonoBehaviour
         riddleText.text = riddle;
     }
 
-
-    public void CheckGameStatus()
+    public bool VerifyLocation()
     {
-        if (lastFlag == 0)
+        coordinates = location.Split(',');
+        correctLatitude = Convert.ToDouble(coordinates[0]);
+        correctLongitude = Convert.ToDouble(coordinates[1]);
+        Debug.Log("What is the correctLatitude and correctLongitude?");
+        Debug.Log(correctLatitude);
+        Debug.Log(correctLongitude);
+        if (UseCurrentButton.usingCurLocInGame == true)
         {
-            OnButtonCallAzureFunction();
-//            OnButtonUpdateGame();
-            //Debug.Log("not last");
+            latitudeDiff = Math.Abs(UseCurrentButton.latitude - correctLatitude);
+            longitudeDiff = Math.Abs(UseCurrentButton.longitude - correctLongitude);
         }
         else
         {
-            Debug.Log("last");
-            clueId = 0;
-            OnButtonUpdateGame();
-            finishHuntScreen.SetActive(true);
+            latitudeDiff = Math.Abs(ReverseGeocodeOnClick.latitude - correctLatitude);
+            longitudeDiff = Math.Abs(ReverseGeocodeOnClick.longitude - correctLongitude);
+        }
+                                                            // at the equator...
+        if (latitudeDiff <= 0.01 && longitudeDiff <= 0.01)  // .01 deg = 1.11 km
+        {                                                   // .001 deg = 111 m
+            return true;                                    // .0001 deg = 11.1 m
+        }                                                   // moving north or south a degree of longitude
+        return false;                                       // is a shorter distance
+    }                                                       // https://en.wikipedia.org/wiki/Decimal_degrees
+
+    public void CheckGameStatus()
+    {
+        correctLocation = VerifyLocation();
+        if (correctLocation)
+        {
+            if (lastFlag == 0)
+            {
+                OnButtonCallAzureFunction();
+                // OnButtonUpdateGame() is called after we get the next clue
+            }
+            else
+            {
+                Debug.Log("last");
+                clueId = 0;
+                OnButtonUpdateGame();
+                finishHuntScreen.SetActive(true);
+                playGameScreen.SetActive(false);
+            }
+        }
+        else
+        {
+            wrongLocationScreen.SetActive(true);
             playGameScreen.SetActive(false);
         }
     }
@@ -105,6 +146,8 @@ public class SolveClueScript : MonoBehaviour
             riddleText.text = riddle;
 
             OnButtonUpdateGame();
+            rightLocationScreen.SetActive(true);
+            playGameScreen.SetActive(false);
         }
     }
 

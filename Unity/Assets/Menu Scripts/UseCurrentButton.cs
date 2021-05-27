@@ -7,8 +7,15 @@ public class UseCurrentButton : MonoBehaviour
 {
     public static double latitude = 32.00005;
     public static double longitude = 33.00005;
+
+    // variables for adding a hunt
     public Text coordinates;
     public static bool usingCurrentLocation;
+
+    // variables for playing game
+    public Toggle toggle;
+    public Text coordInGame;
+    public static bool usingCurLocInGame;
 
     public void GetGPS()
     {
@@ -24,7 +31,21 @@ public class UseCurrentButton : MonoBehaviour
             usingCurrentLocation = true;
             StartCoroutine(StartLocationService());
         }
+    }
 
+    public void GetGPSInGame()
+    {
+        if(toggle.isOn == true)
+        {
+            toggle.isOn = false;
+            usingCurLocInGame = false;
+        }
+        else
+        {
+            toggle.isOn = true;
+            usingCurLocInGame = true;
+            StartCoroutine(StartLocationService());
+        }
     }
 
     private IEnumerator StartLocationService()
@@ -71,6 +92,7 @@ public class UseCurrentButton : MonoBehaviour
         Input.location.Stop();
 
         coordinates.text = "Lat: " + latitude.ToString() + "   Long: " + longitude.ToString();
+        coordInGame.text = "Lat: " + latitude.ToString() + "   Long: " + longitude.ToString();
 //        coordinates.text = "Lat: " + "99.99999" + "   Long: " + "88.88888";
 
         yield break;
