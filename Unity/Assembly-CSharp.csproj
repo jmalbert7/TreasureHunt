@@ -62,6 +62,7 @@
     <Compile Include="Assets\FindLocationScripts\SearchHandler.cs" />
     <Compile Include="Assets\FindLocationScripts\MapStyleChangedHandler.cs" />
     <Compile Include="Assets\Menu Scripts\UseCurrentButton.cs" />
+    <Compile Include="Assets\Game Scripts\ContinueGameScript.cs" />
     <Compile Include="Assets\Microsoft.Maps.Unity.Examples\MapPinExample\Scripts\MapPinProvider.cs" />
     <Compile Include="Assets\Microsoft.Maps.Unity.Examples\Common\Scripts\CopyrightSynchronizer.cs" />
     <Compile Include="Assets\Microsoft.Maps.Unity.Examples\MapPinExample\Scripts\ZoomToClusterMapPin.cs" />
@@ -85,7 +86,6 @@
     <Compile Include="Assets\Microsoft.Maps.Unity.Examples\MapPinExample\Scripts\ZoomToMapPin.cs" />
     <Compile Include="Assets\FindLocationScripts\MapInteractionHandlerSelector.cs" />
     <Compile Include="Assets\Game Scripts\SolveClueScript.cs" />
-    <Compile Include="Assets\ContinueGameScript.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

@@ -62,7 +62,6 @@ public class SolveClueScript : MonoBehaviour
             OnButtonUpdateGame();
             finishHuntScreen.SetActive(true);
             playGameScreen.SetActive(false);
-
         }
     }
 
