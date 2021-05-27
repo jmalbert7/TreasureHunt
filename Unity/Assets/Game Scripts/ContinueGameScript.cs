@@ -12,6 +12,7 @@ public class ContinueGameScript : MonoBehaviour
 
     public GameObject mainMenu;
     public GameObject playGameScreen;
+    public GameObject noGameScreen;
 
     // Start is called before the first frame update
     void Start()
@@ -27,7 +28,15 @@ public class ContinueGameScript : MonoBehaviour
 
     public void OnButtonCallAzureFunction()
     {
-        StartCoroutine(AzureGetRequest());
+        if (SolveClueScript.clueId == 0)
+        {
+            noGameScreen.SetActive(true);
+            mainMenu.SetActive(false);
+        }
+        else
+        {
+            StartCoroutine(AzureGetRequest());
+        }
     }
 
     IEnumerator AzureGetRequest()

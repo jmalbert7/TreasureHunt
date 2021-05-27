@@ -106,6 +106,10 @@ public class LoginScript : MonoBehaviour
             {
                 SolveClueScript.clueId = Convert.ToInt32(game.ClueId);
             }
+            else
+            {
+                SolveClueScript.clueId = 0;
+            }
             Debug.Log("GameId, UserId");
             Debug.Log(gameId);
             Debug.Log(userId);
