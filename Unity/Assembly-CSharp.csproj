@@ -71,7 +71,6 @@
     <Compile Include="Assets\AddHuntScripts\AddHuntScript.cs" />
     <Compile Include="Assets\AddHuntScripts\GetPrevClueScript.cs" />
     <Compile Include="Assets\FindLocationScripts\ReverseGeocodeOnClick.cs" />
-    <Compile Include="Assets\Menu Scripts\MapScript.cs" />
     <Compile Include="Assets\Login Scripts\CreateUserScript.cs" />
     <Compile Include="Assets\Microsoft.Maps.Unity.Examples\Common\Scripts\TransferLabelText.cs" />
     <Compile Include="Assets\AddHuntScripts\UpdateClueScript.cs" />

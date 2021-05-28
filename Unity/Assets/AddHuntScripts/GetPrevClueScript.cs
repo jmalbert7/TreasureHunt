@@ -1,28 +1,14 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.UI;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 
 public class GetPrevClueScript : MonoBehaviour
 {
     public InputField riddleInput;
 
     readonly string getUrl = "https://functionapplicationgroupx.azurewebsites.net/api/clues/?clueid=";
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     public void UpdateInputField()
     {

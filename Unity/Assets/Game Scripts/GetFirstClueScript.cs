@@ -14,18 +14,6 @@ public class GetFirstClueScript : MonoBehaviour
     public GameObject chooseHuntScreen;
     public GameObject playGameScreen;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void SetHuntId(Button b)
     {
         huntId = GetHuntsScript.huntIds[Convert.ToInt32(b.tag)];
