@@ -1,9 +1,6 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
-using TMPro;
-using UnityEngine.UI;
 using Newtonsoft.Json;
 
 public class ContinueGameScript : MonoBehaviour
@@ -13,18 +10,6 @@ public class ContinueGameScript : MonoBehaviour
     public GameObject mainMenu;
     public GameObject playGameScreen;
     public GameObject noGameScreen;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     public void OnButtonCallAzureFunction()
     {

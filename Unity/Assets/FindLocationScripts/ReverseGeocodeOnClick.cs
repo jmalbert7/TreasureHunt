@@ -3,10 +3,8 @@
 
 using Microsoft.Geospatial;
 using Microsoft.Maps.Unity;
-using Microsoft.Maps.Unity.Search;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 /// <summary>
 /// Instantiates a <see cref="MapPin"/> for each location that is reverse geocoded.
@@ -34,15 +32,12 @@ public class ReverseGeocodeOnClick : MonoBehaviour
     private MapPin _mapPinPrefab = null;
 
     // removes map pins from the map pin layer, doesn't work
+/*
     public void RemoveMapPins()
     {
-/*
-        for(int i = 0; i < _mapPinLayer.MapPins.Count; i++)
-        {
-            _mapPinLayer.MapPins.RemoveAt(i);
-        }
-*/
+        _mapPinLayer.MapPins.Clear();
     }
+*/
 
     public void Awake()
     {
@@ -51,7 +46,8 @@ public class ReverseGeocodeOnClick : MonoBehaviour
         Debug.Assert(_mapPinLayer != null);
     }
 
-    public async void OnTapAndHold(LatLonAlt latLonAlt)
+//    public async void OnTapAndHold(LatLonAlt latLonAlt)
+    public void OnTapAndHold(LatLonAlt latLonAlt)
     {
         if (ReferenceEquals(MapSession.Current, null) || string.IsNullOrEmpty(MapSession.Current.DeveloperKey))
         {
@@ -61,13 +57,15 @@ public class ReverseGeocodeOnClick : MonoBehaviour
             return;
         }
 
-        var finderResult = await MapLocationFinder.FindLocationsAt(latLonAlt.LatLon);
+//        var finderResult = await MapLocationFinder.FindLocationsAt(latLonAlt.LatLon);
 
+/*
         string formattedAddressString = null;
         if (finderResult.Locations.Count > 0)
         {
             formattedAddressString = finderResult.Locations[0].Address.FormattedAddress;
         }
+*/
 
         if (_mapPinPrefab != null)
         {
@@ -80,10 +78,10 @@ public class ReverseGeocodeOnClick : MonoBehaviour
             latLonText.text = "Latitude: " + latitude.ToString() + "   Longitude: " + longitude.ToString();
             Debug.Log("What is the latitude?" + latLonAlt.LatitudeInDegrees);
             Debug.Log("What is the longitude?" + latLonAlt.LongitudeInDegrees);
-            var textMesh = newMapPin.GetComponentInChildren<TextMeshPro>();
-            textMesh.text = formattedAddressString ?? "No address found.";
+//            var textMesh = newMapPin.GetComponentInChildren<TextMeshPro>();
+//            textMesh.text = formattedAddressString ?? "No address found.";
 
-//            _mapPinLayer.MapPins.Clear();     // doesn't work
+            _mapPinLayer.MapPins.Clear();
             _mapPinLayer.MapPins.Add(newMapPin);
         }
     }

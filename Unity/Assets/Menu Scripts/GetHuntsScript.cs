@@ -14,18 +14,6 @@ public class GetHuntsScript : MonoBehaviour
 
     readonly string getUrl = "https://functionapplicationgroupx.azurewebsites.net/api/hunts/list";
 
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public class Hunt
     {
         public int HuntId { get; set; }
