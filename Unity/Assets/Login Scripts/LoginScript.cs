@@ -74,6 +74,14 @@ public class LoginScript : MonoBehaviour
         Debug.Log(myPassword);
     }
 
+    public void BypassLogin()
+    {
+        gameId = 15;
+        userId = 38;
+        loginScreen.SetActive(false);
+        mainMenuScreen.SetActive(true);
+    }
+
     IEnumerator AzureGetRequest()
     {
         // Parameter to pass into query string
