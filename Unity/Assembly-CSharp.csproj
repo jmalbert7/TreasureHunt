@@ -315,7 +315,7 @@
  <HintPath>C:/Users/cope_/OneDrive/Documents/OSU Work/finalcap/TreasureHunt/Unity/Library/PackageCache/com.microsoft.maps.unity@0.10.2/Plugins/Microsoft.Maps.Unity.dll</HintPath>
  </Reference>
  <Reference Include="Newtonsoft.Json">
- <HintPath>C:/Users/cope_/OneDrive/Documents/OSU Work/finalcap/TreasureHunt/Unity/Assets/Plugins/Newtonsoft.Json.dll</HintPath>
+ <HintPath>C:/Users/cope_/OneDrive/Documents/OSU Work/finalcap/TreasureHunt/Unity/Library/PackageCache/jillejr.newtonsoft.json-for-unity@13.0.102/Plugins/Newtonsoft.Json Editor/Newtonsoft.Json.dll</HintPath>
  </Reference>
  <Reference Include="netstandard">
  <HintPath>C:/Program Files/Unity/Hub/Editor/2020.3.3f1/Editor/Data/NetStandard/ref/2.0.0/netstandard.dll</HintPath>
