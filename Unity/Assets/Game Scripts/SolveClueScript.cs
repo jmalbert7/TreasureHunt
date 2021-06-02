@@ -58,7 +58,6 @@ public class SolveClueScript : MonoBehaviour
         coordinates = location.Split(',');
         correctLatitude = Convert.ToDouble(coordinates[0]);
         correctLongitude = Convert.ToDouble(coordinates[1]);
-        Debug.Log("What is the correctLatitude and correctLongitude?");
         Debug.Log(correctLatitude);
         Debug.Log(correctLongitude);
         if (UseCurrentButton.usingCurLocInGame == true)
