@@ -87,6 +87,8 @@ public class LoginScript : MonoBehaviour
         // Parameter to pass into query string
         string passwordParam = "&password=";
 
+        Debug.Log(myPassword);
+
         // Hash password
         myPassword = HashPassword(myPassword);
 
